@@ -1,6 +1,6 @@
-# shopping-ele
+# sharecar-admin
 
-> webpack配置&vue实现购物车
+> 共享汽车管理后台
 
 ## Build Setup
 
