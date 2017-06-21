@@ -1,6 +1,5 @@
 <template>
   <div class="hello">
-    <sys-header></sys-header>
     <div class="main">
       <div class="menu">
         <sys-menu></sys-menu>
@@ -14,7 +13,6 @@
 </template>
 
 <script>
-import sysHeader from '../components/common/header'
 import sysFooter from '../components/common/footer'
 import sysMenu from '../components/common/menu'
 export default {
@@ -25,7 +23,6 @@ export default {
     }
   },
   components: {
-    sysHeader,
     sysMenu,
     sysFooter
   }
@@ -40,11 +37,9 @@ export default {
     width: 240px;
     border-right: solid 1px #e1e1e1;
     position: fixed;
-    top: 45px;
     left: 0;
   }
   .content {
     margin-left: 240px;
-    margin-top: 45px;
   }
 </style>

@@ -42,7 +42,7 @@
   export default {
     data () {
       return {
-        theme2: 'light'
+        theme2: 'dark'
       }
     }
   }
