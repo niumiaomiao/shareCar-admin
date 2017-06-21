@@ -9,11 +9,30 @@ const routers = [
     meta: { requiresAuth: true },
     children: [
       {
-        path: '/car/list',
-        name: 'carList',
+        // 城市管理
+        path: '/city/manage',
+        name: 'cityManage',
         component (resolve) {
-          require.ensure(['../views/carManage/carList.vue'], () => {
-            resolve(require('../views/carManage/carList.vue'))
+          require.ensure(['../views/carManage/cityManage.vue'], () => {
+            resolve(require('../views/carManage/cityManage.vue'))
+          })
+        }
+      }, {
+        // 车型管理
+        path: '/cartype/manage',
+        name: 'cartypeManage',
+        component (resolve) {
+          require.ensure(['../views/carManage/cartypeManage.vue'], () => {
+            resolve(require('../views/carManage/cartypeManage.vue'))
+          })
+        }
+      }, {
+        // 定价管理
+        path: '/fixprice/manage',
+        name: 'fixpriceManage',
+        component (resolve) {
+          require.ensure(['../views/carManage/fixpriceManage.vue'], () => {
+            resolve(require('../views/carManage/fixpriceManage.vue'))
           })
         }
       }
