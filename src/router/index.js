@@ -35,6 +35,24 @@ const routers = [
             resolve(require('../views/carManage/fixpriceManage.vue'))
           })
         }
+      }, {
+        // 车辆信息管理
+        path: '/carinfo/manage',
+        name: 'carinfoManage',
+        component (resolve) {
+          require.ensure(['../views/carManage/carinfoManage.vue'], () => {
+            resolve(require('../views/carManage/carinfoManage.vue'))
+          })
+        }
+      }, {
+        // 车辆详情
+        path: '/car/detail',
+        name: 'carDetail',
+        component (resolve) {
+          require.ensure(['../views/carManage/carDetail.vue'], () => {
+            resolve(require('../views/carManage/carDetail.vue'))
+          })
+        }
       }
     ]
   }, {

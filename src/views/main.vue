@@ -6,14 +6,14 @@
       </div>
       <div class="content">
         <router-view></router-view>
-        <sys-footer></sys-footer>
+        <!-- <sys-footer></sys-footer> -->
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import sysFooter from '../components/common/footer'
+// import sysFooter from '../components/common/footer'
 import sysMenu from '../components/common/menu'
 export default {
   name: 'hello',
@@ -23,8 +23,7 @@ export default {
     }
   },
   components: {
-    sysMenu,
-    sysFooter
+    sysMenu
   }
 }
 </script>
@@ -40,6 +39,6 @@ export default {
     left: 0;
   }
   .content {
-    margin-left: 240px;
+    margin-left: 255px;
   }
 </style>
