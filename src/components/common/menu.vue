@@ -7,8 +7,8 @@
               <Icon type="ios-paper"></Icon>
               车辆管理
           </template>
-          <Menu-item name="1-1">城市管理</Menu-item>
-          <Menu-item name="1-2">车型管理</Menu-item>
+          <Menu-item name="1-1"><router-link to="/car/list">城市管理</router-link></Menu-item>
+          <Menu-item name="1-2"><router-link to="/car/detail">车型管理</router-link></Menu-item>
           <Menu-item name="1-3">定价管理</Menu-item>
         </Submenu>
         <Submenu name="2">
@@ -42,7 +42,7 @@
   export default {
     data () {
       return {
-        theme2: 'light'
+        theme2: 'dark'
       }
     }
   }
