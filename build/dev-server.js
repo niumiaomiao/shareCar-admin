@@ -60,9 +60,8 @@ app.use(devMiddleware)
 // compilation error display
 app.use(hotMiddleware)
 
-// serve pure static assets
-var staticPath = path.posix.join(config.dev.assetsPublicPath, config.dev.assetsSubDirectory)
-app.use(staticPath, express.static('./static'))
+// proxy api requests
+app.use(proxyMiddleware('*', {target: 'https://dev.yunzujia.com.cn', changeOrigin: true}))
 
 var uri = 'http://localhost:' + port
 

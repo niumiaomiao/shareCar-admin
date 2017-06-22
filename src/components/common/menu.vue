@@ -7,9 +7,9 @@
               <Icon type="ios-paper"></Icon>
               车辆管理
           </template>
-          <Menu-item name="1-1"><router-link to="/car/list">城市管理</router-link></Menu-item>
-          <Menu-item name="1-2"><router-link to="/car/detail">车型管理</router-link></Menu-item>
-          <Menu-item name="1-3">定价管理</Menu-item>
+          <Menu-item name="1-1"><router-link to="/city/manage">城市管理</router-link></Menu-item>
+          <Menu-item name="1-2"><router-link to="/cartype/manage">车型管理</router-link></Menu-item>
+          <Menu-item name="1-3"><router-link to="/fixprice/manage">定价管理</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="2">
@@ -110,3 +110,21 @@
     }
   }
 </script>
+
+<style>
+  .ivu-menu-vertical .ivu-menu-item {
+    padding: 0px;
+  }
+  .ivu-menu-item a {
+    display: block;
+    padding: 14px 24px;
+    color: #495060;
+  }
+
+  .ivu-menu-item a:hover {
+    color: #fff;
+  }
+  .ivu-menu-item-active a, .ivu-menu-item-selected a {
+    color: #fff;
+  }
+</style>

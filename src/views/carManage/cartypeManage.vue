@@ -8,16 +8,44 @@
       return {
         columns1: [
           {
-            title: '姓名',
+            title: '序号',
             key: 'name'
           },
           {
-            title: '年龄',
+            title: '车型',
             key: 'age'
           },
           {
-            title: '地址',
+            title: '操作人',
             key: 'address'
+          },
+          {
+            title: '操作日期',
+            key: 'address'
+          },
+          {
+            title: '操作',
+            key: 'action',
+            fixed: 'right',
+            render (h, params) {
+              return h('div', [
+                h('Icon', {
+                  props: {
+                    type: 'ios-eye',
+                    size: '22'
+                  },
+                  style: {
+                    marginRight: '5px'
+                  }
+                }),
+                h('Icon', {
+                  props: {
+                    type: 'trash-a',
+                    size: '22'
+                  }
+                })
+              ])
+            }
           }
         ],
         data1: [
