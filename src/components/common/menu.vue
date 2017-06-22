@@ -48,7 +48,7 @@
               <Icon type="stats-bars"></Icon>
               违章管理
           </template>
-          <Menu-item name="4-1">违章列表</Menu-item>
+          <Menu-item name="4-1"><router-link to="/illegal/manage">违章列表</router-link></Menu-item>
           <Menu-item name="4-2">新增违章</Menu-item>
           <Menu-item name="4-3">保养详情</Menu-item>
           <Menu-item name="4-4">维修详情</Menu-item>
