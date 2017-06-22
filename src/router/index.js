@@ -45,6 +45,15 @@ const routers = [
           })
         }
       }, {
+        // 违章管理
+        path: '/illegal/manage',
+        name: 'illegalManage',
+        component (resolve) {
+          require.ensure(['../views/illegalManage/illegalDetail.vue'], () => {
+            resolve(require('../views/illegalManage/illegalDetail.vue'))
+          })
+        }
+      }, {
         // 车辆详情
         path: '/car/detail',
         name: 'carDetail',
