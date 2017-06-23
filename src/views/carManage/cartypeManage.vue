@@ -44,7 +44,7 @@
                   },
                   on: {
                     click: () => {
-                      $route.params('/car/detail/' + params.id)
+                      console.log('fsdf')
                     }
                   }
                 }),
