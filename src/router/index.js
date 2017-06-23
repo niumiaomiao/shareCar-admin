@@ -55,7 +55,7 @@ const routers = [
         }
       }, {
         // 车辆详情
-        path: '/car/detail',
+        path: '/car/detail/:id',
         name: 'carDetail',
         component (resolve) {
           require.ensure(['../views/carManage/carDetail.vue'], () => {

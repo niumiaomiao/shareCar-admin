@@ -1,27 +1,32 @@
 <template>
-  <Table stripe :columns="columns1" :data="data1"></Table>
+  <div>
+    <Table stripe :columns="columns1" :data="dataTable"></Table>
+    <Page class-name="pageBox" :total="pageObj.total" :current="pageObj.current_page" :page-size="pageObj.per_page" show-elevator></Page>
+  </div>
 </template>
 
 <script>
+  import AXIOS from '../../axios/axios.js'
+  const Axios = new AXIOS()
   export default {
     data () {
       return {
         columns1: [
           {
             title: '序号',
-            key: 'name'
+            key: 'id'
           },
           {
             title: '车型',
-            key: 'age'
+            key: 'name'
           },
           {
             title: '操作人',
-            key: 'address'
+            key: 'comment'
           },
           {
             title: '操作日期',
-            key: 'address'
+            key: 'updated_at'
           },
           {
             title: '操作',
@@ -36,6 +41,11 @@
                   },
                   style: {
                     marginRight: '5px'
+                  },
+                  on: {
+                    click: () => {
+                      $route.params('/car/detail/' + params.id)
+                    }
                   }
                 }),
                 h('Icon', {
@@ -48,29 +58,43 @@
             }
           }
         ],
-        data1: [
-          {
-            name: '王小明',
-            age: 18,
-            address: '北京市朝阳区芍药居'
-          },
-          {
-            name: '张小刚',
-            age: 25,
-            address: '北京市海淀区西二旗'
-          },
-          {
-            name: '李小红',
-            age: 30,
-            address: '上海市浦东新区世纪大道'
-          },
-          {
-            name: '周小伟',
-            age: 26,
-            address: '深圳市南山区深南大道'
+        dataTable: [],
+        pageObj: {
+          total: 1,
+          current_page: 1,
+          per_page: 20
+        }
+      }
+    },
+    mounted () {
+      this.getCarList()
+    },
+    methods: {
+      getCarList () {
+        let param = {
+          param: {},
+          api: '/backend/car/type'
+        }
+        Axios.get(param).then(res => {
+          if (res.data.result === 0) {
+            this.dataTable = res.data.content.data
+            this.pageObj.total = res.data.content.total
+            this.pageObj.current_page = res.data.content.current_page
+            this.pageObj.per_page = res.data.content.per_page
+          } else {
+            this.$Message.warning(res.data.content.message)
           }
-        ]
+        }).catch(err => {
+          console.log(err)
+        })
       }
     }
   }
 </script>
+
+<style>
+  .pageBox {
+    margin-top: 20px;
+    text-align: right;
+  }
+</style>
