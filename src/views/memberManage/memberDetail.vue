@@ -4,77 +4,77 @@
       <Col span="24" class="first-title">车辆信息</Col><br/> 
       <Col span="24" class="small-title">基本信息</Col><br/>
       <Col span="6">
-          <div>头像：</div>
+          <div>头像：<img :src="dataObj.face"></div>
       </Col>
       <Col span="6">
-          <div>性别：男</div>
+          <div>性别：{{dataObj.sex}}</div>
       </Col>
       <Col span="6">
-          <div>电话：</div>
+          <div>电话：{{dataObj.phone}}</div>
       </Col>
       <Col span="6">
-          <div>出生年月：</div>
-      </Col>
-    </Row><br/>
-    <Row :gutter="16">
-      <Col span="6">
-          <div>注册时间：</div>
-      </Col>
-      <Col span="6">
-          <div>用户状态：</div>
-      </Col>
-      <Col span="6">
-          <div>绑定微信号：</div>
-      </Col>
-      <Col span="6">
-          <div>押金状态</div>
+          <div>出生年月：{{dataObj.birthday}}</div>
       </Col>
     </Row><br/>
     <Row :gutter="16">
       <Col span="6">
-          <div>余额：</div>
+          <div>注册时间：{{dataObj.reg_time}}</div>
       </Col>
       <Col span="6">
-          <div>押金：</div>
+          <div>用户状态：{{dataObj.user_state}}</div>
       </Col>
       <Col span="6">
-          <div>订单数：</div>
+          <div>绑定微信号：{{dataObj.weixin}}</div>
       </Col>
       <Col span="6">
-          <div>信用值</div>
+          <div>押金状态: {{dataObj.deposit_state}}</div>
+      </Col>
+    </Row><br/>
+    <Row :gutter="16">
+      <Col span="6">
+          <div>余额：{{dataObj.money}}</div>
+      </Col>
+      <Col span="6">
+          <div>押金：{{dataObj.deposit}}</div>
+      </Col>
+      <Col span="6">
+          <div>订单数：{{dataObj.order_count}}</div>
+      </Col>
+      <Col span="6">
+          <div>信用值：{{dataObj.credit_score}}</div>
       </Col>
     </Row><br/>
     <Row>
-      <Col span="6">违章记录：</Col>
+      <Col span="6">违章记录：{{dataObj.peccancy_count}}</Col>
     </Row><br/>
     <Row>
       <Col span="24" class="small-title">认证信息</Col><br/>
       <Col span="6">
-          <div>认证状态：</div>
+          <div>认证状态：{{dataObj.verify_state}}</div>
       </Col>
       <Col span="6">
-          <div>认证姓名：</div>
+          <div>认证姓名：{{dataObj.username}}</div>
       </Col>
       <Col span="6">
-          <div>身份证号：</div>
+          <div>身份证号：{{dataObj.id_card}}</div>
       </Col>
       <Col span="6">
-          <div>身份证有效期：</div>
+          <div>身份证有效期：{{dataObj.id_card_expire}}</div>
       </Col>
     </Row><br/>
     <Row>
       <Col span="6">
-          <div>驾驶证有效期：</div>
+          <div>驾驶证有效期：{{dataObj.driver_license_expire}}</div>
       </Col>
       <Col span="6">
-          <div>驾驶证类型：</div>
+          <div>驾驶证类型：{{dataObj.driver_license_type}}</div>
       </Col>
     </Row><br/>
     <Row>
-      <Col span="24">认证图片：</Col>
+      <!-- <Col span="24">认证图片：<img v-for="item in verify_images" :src="item"></Col> -->
     </Row><br/>
     <Row>
-      <Col span="24">审核备注：</Col>
+      <Col span="24">审核备注：{{dataObj.verify_remark}}</Col>
     </Row>
   </div>
 </template>
@@ -93,7 +93,7 @@
     },
     methods: {
       getmemberDetail () {
-        GX.getJson('/backend/user/verify_info', {user_id: this.userId}, (res) => {
+        GX.postJson('/backend/user/detail', {user_id: this.userId}, (res) => {
           if (res.result === 0) {
             this.dataObj = res.content
           } else {

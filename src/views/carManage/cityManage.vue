@@ -1,5 +1,8 @@
 <template>
-  <Table stripe :columns="columns1" :data="dataTable"></Table>
+  <div>
+    <Table stripe :columns="columns1" :data="dataTable"></Table>
+    <Page class-name="pageBox" :total="pageObj.total" :current="pageObj.current_page" :page-size="pageObj.per_page" show-elevator></Page>
+  </div>
 </template>
 
 <script>
@@ -57,7 +60,12 @@
             }
           }
         ],
-        dataTable: []
+        dataTable: [],
+        pageObj: {
+          total: 1,
+          current_page: 1,
+          per_page: 20
+        }
       }
     },
     mounted () {
@@ -65,9 +73,12 @@
     },
     methods: {
       getCityList () {
-        GX.getJson('/backend/city/list', {}, (res) => {
+        GX.getJson('/backend/cities', {}, (res) => {
           if (res.result === 0) {
             this.dataTable = res.content.data
+            this.pageObj.total = res.content.total
+            this.pageObj.current_page = res.content.current_page
+            this.pageObj.per_page = parseInt(res.content.per_page)
           } else {
             this.$Message.warning(res.content.message)
           }

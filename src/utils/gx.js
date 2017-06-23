@@ -6,7 +6,7 @@ export default {
       url: url,
       type: 'post',
       dataType: 'json',
-      data: window.JSON.stringify(data),
+      data: data,
       success (res) {
         cb(res)
       },

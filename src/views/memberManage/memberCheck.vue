@@ -1,35 +1,35 @@
 <template>
-  <Form label-width="120">
+  <Form :label-width="120">
     <Row :gutter="16">
       <Col span="24" class="first-title">认证审核</Col><br/>
       <Col span="24">
         <Form-item label="认证姓名：">
-          需要
+          {{dataObj.username}}
         </Form-item>
       </Col>
       <Col span="24">
         <Form-item label="身份证号：">
-          需要
+          {{dataObj.id_card}}
         </Form-item>
       </Col>
       <Col span="24">
         <Form-item label="身份证有效期：">
-          需要
+          {{dataObj.id_card_expiry}}
         </Form-item>
       </Col>
       <Col span="24">
         <Form-item label="驾驶证有效期：">
-          需要
+          {{dataObj.driver_license_expiry}}
         </Form-item>
       </Col>
       <Col span="24">
         <Form-item label="驾驶证类型：">
-          需要
+          {{dataObj.driver_license_type}}
         </Form-item>
       </Col>
       <Col span="24">
         <Form-item label="生日：">
-          需要
+          {{dataObj.birthday}}
         </Form-item>
       </Col>
       <Col span="24">
@@ -39,29 +39,31 @@
       </Col>
       <Col span="24">
         <Form-item label="审核">
-          <Radio-group>
-            <Radio label="male">通过</Radio>
-            <Radio label="female">不通过</Radio>
+          <Radio-group v-model="dataObj.verify_state">
+            <Radio label="1">通过</Radio>
+            <Radio label="2">拒绝</Radio>
           </Radio-group>
         </Form-item>
       </Col>
-      <Col span="18">
+      <Col span="18" v-if="dataObj.reject_reason">
         <Form-item label="拒绝原因">
           <Select placeholder="请选择">
-            <Option value="beijing">北京市</Option>
-            <Option value="shanghai">上海市</Option>
-            <Option value="shenzhen">深圳市</Option>
+            <Option value="上传图片不清晰">上传图片不清晰</Option>
+            <Option value="身份证与驾驶证不一致">身份证与驾驶证不一致</Option>
+            <Option value="身份证无效">身份证无效</Option>
+            <Option value="驾驶证无效">驾驶证无效</Option>
+            <Option value="填写信息与上传图片信息不一致">填写信息与上传图片信息不一致</Option>
           </Select>
         </Form-item>
       </Col>
       <Col span="18">
-        <Form-item label="拒绝原因">
-          <Input type="textarea" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入..."></Input>
+        <Form-item label="审核备注">
+          <Input type="textarea" v-model="dataObj.verify_remark" :autosize="{minRows: 2,maxRows: 5}" placeholder="请输入..."></Input>
         </Form-item>
       </Col>
       <Col span="10" :offset="3">
         <Form-item>
-          <Button type="primary">提交</Button>
+          <Button type="primary" @click.native="submit">提交</Button>
           <Button type="ghost" style="margin-left: 8px">取消</Button>
         </Form-item>
       </Col>
@@ -75,19 +77,32 @@
     data () {
       return {
         userId: 'DE018640-DCEE-C7B3-453F-CFE484DBFDF8',
+        // 信息查询
         dataObj: {}
       }
     },
     mounted () {
+      this.dataObj.verify_state = 1
+      this.dataObj.reject_reason = ''
+      this.dataObj.verify_remark = ''
       this.getmemberDetail()
     },
     methods: {
       getmemberDetail () {
-        GX.getJson('/backend/user/verify_info', {user_id: this.userId}, (res) => {
+        GX.postJson('/backend/user/verify_info', {user_id: this.userId}, (res) => {
           if (res.result === 0) {
             this.dataObj = res.content
           } else {
-            this.$Message.warning(res.content.message)
+            this.$Message.warning(res.message)
+          }
+        })
+      },
+      submit () {
+        GX.postJson('/backend/user/verified', this.dataObj, (res) => {
+          if (res.result === 0) {
+            this.$Message.success(res.message)
+          } else {
+            this.$Message.warning(res.message)
           }
         })
       }
