@@ -12,6 +12,16 @@
           <Menu-item name="1-3"><router-link to="/fixprice/manage">定价管理</router-link></Menu-item>
         </Submenu>
 
+        <Submenu name="10">
+          <template slot="title">
+              <Icon type="stats-bars"></Icon>
+              会员信息管理
+          </template>
+          <Menu-item name="10-3"><router-link to="/member/list">会员列表</router-link></Menu-item>
+          <Menu-item name="10-1"><router-link to="/member/detail">会员详情</router-link></Menu-item>
+          <Menu-item name="10-2"><router-link to="/member/check">认证审核</router-link></Menu-item>
+        </Submenu>
+
         <Submenu name="2">
           <template slot="title">
               <Icon type="ios-people"></Icon>
@@ -111,15 +121,6 @@
           <Menu-item name="9-6"><router-link to="/">充电桩管理</router-link></Menu-item>
           <Menu-item name="9-7"><router-link to="/">新增充电桩</router-link></Menu-item>
           <Menu-item name="9-8"><router-link to="/">编辑充电桩</router-link></Menu-item>
-        </Submenu>
-
-        <Submenu name="10">
-          <template slot="title">
-              <Icon type="stats-bars"></Icon>
-              会员信息管理
-          </template>
-          <Menu-item name="10-1"><router-link to="/">会员详情</router-link></Menu-item>
-          <Menu-item name="10-2"><router-link to="/">认证审核</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="11">

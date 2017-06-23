@@ -36,15 +36,17 @@ export default {
   .main {
     width: 100%;
     background: #f5f7f9;
+    font-size: 14px;
   }
   .menu {
     width: 240px;
     border-right: solid 1px #e1e1e1;
     position: fixed;
     left: 0;
+    top: 50px;
   }
   .content {
     margin-left: 255px;
-    margin-top: 20px;
+    margin-top: 50px;
   }
 </style>

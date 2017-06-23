@@ -3,8 +3,7 @@
 </template>
 
 <script>
-  import AXIOS from '../../axios/axios.js'
-  const Axios = new AXIOS()
+  import GX from '../../utils/gx.js'
   export default {
     data () {
       return {
@@ -66,16 +65,12 @@
     },
     methods: {
       getCityList () {
-        let param = {
-          param: {},
-          api: '/backend/city/list'
-        }
-        Axios.get(param).then(res => {
-          if (res.data.result === 0) {
-            this.dataTable = res.data.content.data
+        GX.getJson('/backend/city/list', {}, (res) => {
+          if (res.result === 0) {
+            this.dataTable = res.content.data
+          } else {
+            this.$Message.warning(res.content.message)
           }
-        }).catch(err => {
-          console.log(err)
         })
       }
     }

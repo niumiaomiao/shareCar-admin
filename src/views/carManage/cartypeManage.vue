@@ -7,8 +7,7 @@
 </template>
 
 <script>
-  import AXIOS from '../../axios/axios.js'
-  const Axios = new AXIOS()
+  import GX from '../../utils/gx.js'
   export default {
     data () {
       return {
@@ -70,21 +69,15 @@
     },
     methods: {
       getCarList () {
-        let param = {
-          param: {},
-          api: '/backend/car/type'
-        }
-        Axios.get(param).then(res => {
-          if (res.data.result === 0) {
-            this.dataTable = res.data.content.data
-            this.pageObj.total = res.data.content.total
-            this.pageObj.current_page = res.data.content.current_page
-            this.pageObj.per_page = res.data.content.per_page
+        GX.getJson('/backend/car/type', {}, (res) => {
+          if (res.result === 0) {
+            this.dataTable = res.content.data
+            this.pageObj.total = res.content.total
+            this.pageObj.current_page = res.content.current_page
+            this.pageObj.per_page = res.content.per_page
           } else {
-            this.$Message.warning(res.data.content.message)
+            this.$Message.warning(res.content.message)
           }
-        }).catch(err => {
-          console.log(err)
         })
       }
     }

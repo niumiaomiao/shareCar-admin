@@ -71,6 +71,24 @@ const routers = [
             resolve(require('../views/memberManage/memberList.vue'))
           })
         }
+      }, {
+        // 会员详情
+        path: '/member/detail',
+        name: 'memberDetail',
+        component (resolve) {
+          require.ensure(['../views/memberManage/memberDetail.vue'], () => {
+            resolve(require('../views/memberManage/memberDetail.vue'))
+          })
+        }
+      }, {
+        // 会员审核
+        path: '/member/check',
+        name: 'memberCheck',
+        component (resolve) {
+          require.ensure(['../views/memberManage/memberCheck.vue'], () => {
+            resolve(require('../views/memberManage/memberCheck.vue'))
+          })
+        }
       }
     ]
   }, {
