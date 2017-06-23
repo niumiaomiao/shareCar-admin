@@ -62,6 +62,15 @@ const routers = [
             resolve(require('../views/carManage/carDetail.vue'))
           })
         }
+      }, {
+        // 会员列表
+        path: '/member/list',
+        name: 'memberList',
+        component (resolve) {
+          require.ensure(['../views/memberManage/memberList.vue'], () => {
+            resolve(require('../views/memberManage/memberList.vue'))
+          })
+        }
       }
     ]
   }, {

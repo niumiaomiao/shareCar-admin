@@ -1,19 +1,21 @@
 <template>
   <div class="hello">
     <div class="main">
+      <sys-header></sys-header>
       <div class="menu">
         <sys-menu></sys-menu>
       </div>
       <div class="content">
         <router-view></router-view>
-        <!-- <sys-footer></sys-footer> -->
+        <sys-footer></sys-footer>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import sysFooter from '../components/common/footer'
+import sysHeader from '../components/common/header'
+import sysFooter from '../components/common/footer'
 import sysMenu from '../components/common/menu'
 export default {
   name: 'hello',
@@ -23,7 +25,9 @@ export default {
     }
   },
   components: {
-    sysMenu
+    sysHeader,
+    sysMenu,
+    sysFooter
   }
 }
 </script>
@@ -31,6 +35,7 @@ export default {
 <style>
   .main {
     width: 100%;
+    background: #f5f7f9;
   }
   .menu {
     width: 240px;
@@ -40,5 +45,6 @@ export default {
   }
   .content {
     margin-left: 255px;
+    margin-top: 20px;
   }
 </style>

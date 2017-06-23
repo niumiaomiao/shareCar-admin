@@ -17,9 +17,9 @@
               <Icon type="ios-people"></Icon>
               车辆信息管理
           </template>
-          <Menu-item name="2-1">地图显示</Menu-item>
-          <Menu-item name="2-2">车辆详情</Menu-item>
-          <Menu-item name="2-3">车辆记录</Menu-item>
+          <Menu-item name="2-1"><router-link to="/">地图显示</router-link></Menu-item>
+          <Menu-item name="2-2"><router-link to="/">车辆详情</router-link></Menu-item>
+          <Menu-item name="2-3"><router-link to="/">车辆记录</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="3">
@@ -27,8 +27,8 @@
               <Icon type="stats-bars"></Icon>
               充电管理
           </template>
-          <Menu-item name="3-1">充电列表</Menu-item>
-          <Menu-item name="3-2">充电详情</Menu-item>
+          <Menu-item name="3-1"><router-link to="/">充电列表</router-link></Menu-item>
+          <Menu-item name="3-2"><router-link to="/">充电详情</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="4">
@@ -36,11 +36,11 @@
               <Icon type="stats-bars"></Icon>
               维保管理
           </template>
-          <Menu-item name="4-1">维保列表</Menu-item>
-          <Menu-item name="4-2">保养详情</Menu-item>
-          <Menu-item name="4-3">维修详情</Menu-item>
-          <Menu-item name="4-4">保险详情</Menu-item>
-          <Menu-item name="4-5">清洗详情</Menu-item>
+          <Menu-item name="4-1"><router-link to="/">维保列表</router-link></Menu-item>
+          <Menu-item name="4-2"><router-link to="/">保养详情</router-link></Menu-item>
+          <Menu-item name="4-3"><router-link to="/">维修详情</router-link></Menu-item>
+          <Menu-item name="4-4"><router-link to="/">保险详情</router-link></Menu-item>
+          <Menu-item name="4-5"><router-link to="/">清洗详情</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="4">
@@ -49,10 +49,10 @@
               违章管理
           </template>
           <Menu-item name="4-1"><router-link to="/illegal/manage">违章列表</router-link></Menu-item>
-          <Menu-item name="4-2">新增违章</Menu-item>
-          <Menu-item name="4-3">保养详情</Menu-item>
-          <Menu-item name="4-4">维修详情</Menu-item>
-          <Menu-item name="4-5">保险详情</Menu-item>
+          <Menu-item name="4-2"><router-link to="/">新增违章</router-link></Menu-item>
+          <Menu-item name="4-3"><router-link to="/">保养详情</router-link></Menu-item>
+          <Menu-item name="4-4"><router-link to="/">维修详情</router-link></Menu-item>
+          <Menu-item name="4-5"><router-link to="/">保险详情</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="5">
@@ -60,7 +60,7 @@
               <Icon type="stats-bars"></Icon>
               调度管理
           </template>
-          <Menu-item name="5-1">调度管理列表</Menu-item>
+          <Menu-item name="5-1"><router-link to="/">调度管理列表</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="6">
@@ -68,8 +68,8 @@
               <Icon type="stats-bars"></Icon>
               监控管理
           </template>
-          <Menu-item name="6-1">车辆运行轨迹</Menu-item>
-          <Menu-item name="6-1">网点监控</Menu-item>
+          <Menu-item name="6-1"><router-link to="/">车辆运行轨迹</router-link></Menu-item>
+          <Menu-item name="6-1"><router-link to="/">网点监控</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="7">
@@ -77,7 +77,7 @@
               <Icon type="stats-bars"></Icon>
               故障申报管理
           </template>
-          <Menu-item name="6-1">管理列表</Menu-item>
+          <Menu-item name="6-1"><router-link to="/">管理列表</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="7">
@@ -85,8 +85,8 @@
               <Icon type="stats-bars"></Icon>
               订单管理
           </template>
-          <Menu-item name="7-1">订单列表</Menu-item>
-          <Menu-item name="7-2">订单详情</Menu-item>
+          <Menu-item name="7-1"><router-link to="/">订单列表</router-link></Menu-item>
+          <Menu-item name="7-2"><router-link to="/">订单详情</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="8">
@@ -94,8 +94,90 @@
               <Icon type="stats-bars"></Icon>
               硬件管理
           </template>
-          <Menu-item name="8-1">设备管理</Menu-item>
-          <Menu-item name="8-2">SIM管理</Menu-item>
+          <Menu-item name="8-1"><router-link to="/">设备管理</router-link></Menu-item>
+          <Menu-item name="8-2"><router-link to="/">SIM管理</router-link></Menu-item>
+        </Submenu>
+
+        <Submenu name="9">
+          <template slot="title">
+              <Icon type="stats-bars"></Icon>
+              网点
+          </template>
+          <Menu-item name="9-1"><router-link to="/">网点管理</router-link></Menu-item>
+          <Menu-item name="9-2"><router-link to="/">新增网点</router-link></Menu-item>
+          <Menu-item name="9-3"><router-link to="/">还车范围规划</router-link></Menu-item>
+          <Menu-item name="9-4"><router-link to="/">网点详情</router-link></Menu-item>
+          <Menu-item name="9-5"><router-link to="/">编辑网点详情</router-link></Menu-item>
+          <Menu-item name="9-6"><router-link to="/">充电桩管理</router-link></Menu-item>
+          <Menu-item name="9-7"><router-link to="/">新增充电桩</router-link></Menu-item>
+          <Menu-item name="9-8"><router-link to="/">编辑充电桩</router-link></Menu-item>
+        </Submenu>
+
+        <Submenu name="10">
+          <template slot="title">
+              <Icon type="stats-bars"></Icon>
+              会员信息管理
+          </template>
+          <Menu-item name="10-1"><router-link to="/">会员详情</router-link></Menu-item>
+          <Menu-item name="10-2"><router-link to="/">认证审核</router-link></Menu-item>
+        </Submenu>
+
+        <Submenu name="11">
+          <template slot="title">
+              <Icon type="stats-bars"></Icon>
+              商户信息
+          </template>
+          <Menu-item name="11-1"><router-link to="/">商户返点</router-link></Menu-item>
+          <Menu-item name="11-2"><router-link to="/">返点详情</router-link></Menu-item>
+        </Submenu>
+
+        <Submenu name="12">
+          <template slot="title">
+              <Icon type="stats-bars"></Icon>
+              车管员管理
+          </template>
+          <Menu-item name="12-1"><router-link to="/">车管员管理</router-link></Menu-item>
+        </Submenu>
+
+        <Submenu name="13">
+          <template slot="title">
+              <Icon type="stats-bars"></Icon>
+              短信管理
+          </template>
+          <Menu-item name="13-1"><router-link to="/">短信管理</router-link></Menu-item>
+        </Submenu>
+
+        <Submenu name="14">
+          <template slot="title">
+              <Icon type="stats-bars"></Icon>
+              数据分析
+          </template>
+          <Menu-item name="14-1"><router-link to="/">车辆数据分析</router-link></Menu-item>
+          <Menu-item name="14-2"><router-link to="/">地域数据分析</router-link></Menu-item>
+          <Menu-item name="14-3"><router-link to="/">统计</router-link></Menu-item>
+        </Submenu>
+
+        <Submenu name="15">
+          <template slot="title">
+              <Icon type="stats-bars"></Icon>
+              财务管理
+          </template>
+          <Menu-item name="15-1"><router-link to="/">押金管理</router-link></Menu-item>
+          <Menu-item name="15-2"><router-link to="/">押金退款管理</router-link></Menu-item>
+          <Menu-item name="15-3"><router-link to="/">退款详情</router-link></Menu-item>
+          <Menu-item name="15-4"><router-link to="/">用费费用管理</router-link></Menu-item>
+          <Menu-item name="15-5"><router-link to="/">发票管理</router-link></Menu-item>
+          <Menu-item name="15-6"><router-link to="/">发票详情</router-link></Menu-item>
+        </Submenu>
+
+        <Submenu name="15">
+          <template slot="title">
+              <Icon type="stats-bars"></Icon>
+              权利管理
+          </template>
+          <Menu-item name="15-1"><router-link to="/">角色管理</router-link></Menu-item>
+          <Menu-item name="15-2"><router-link to="/">新建角色及角色权限</router-link></Menu-item>
+          <Menu-item name="15-3"><router-link to="/">成员管</router-link>理</Menu-item>
         </Submenu>
       </Menu>
     </Col>
@@ -122,9 +204,6 @@
   }
 
   .ivu-menu-item a:hover {
-    color: #fff;
-  }
-  .ivu-menu-item-active a, .ivu-menu-item-selected a {
     color: #fff;
   }
 </style>
