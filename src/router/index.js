@@ -63,6 +63,15 @@ const routers = [
           })
         }
       }, {
+        // 新增车辆
+        path: '/add/car',
+        name: 'addCar',
+        component (resolve) {
+          require.ensure(['../views/carManage/addCar.vue'], () => {
+            resolve(require('../views/carManage/addCar.vue'))
+          })
+        }
+      }, {
         // 会员列表
         path: '/member/list',
         name: 'memberList',

@@ -18,6 +18,7 @@
               车辆信息管理
           </template>
           <Menu-item name="2-4"><router-link to="/carinfo/manage">车辆信息列表</router-link></Menu-item>
+          <Menu-item name="2-5"><router-link to="/add/car">新增车辆</router-link></Menu-item>
           <Menu-item name="2-1"><router-link to="/">地图显示</router-link></Menu-item>
           <Menu-item name="2-2"><router-link to="/">车辆详情</router-link></Menu-item>
           <Menu-item name="2-3"><router-link to="/">车辆记录</router-link></Menu-item>
