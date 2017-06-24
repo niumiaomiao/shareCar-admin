@@ -1,6 +1,37 @@
 <template>
   <div>
-    <nav-bar title="车辆信息管理"></nav-bar>
+    <nav-bar title="网点列表"></nav-bar>
+    <Form :label-width="80">
+      <Row :gutter="16">
+        <Col span="4">
+          <Form-item label="城市">
+            <Input placeholder="请输入"></Input>
+          </Form-item>
+        </Col>
+        <Col span="4">
+          <Form-item label="网点名称">
+            <Input placeholder="请输入网点名称"></Input>
+          </Form-item>
+        </Col>
+        <Col span="4">
+          <Form-item label="车型选择">
+            <Select placeholder="请选择" style="width: 120px">
+              <Option value="beijing">北京市</Option>
+              <Option value="shanghai">上海市</Option>
+              <Option value="shenzhen">深圳市</Option>
+            </Select>
+          </Form-item>
+        </Col>
+        <Col span="3" offset="3">
+          <Button type="info">查询</Button>
+          <Button type="success">清空</Button>
+        </Col>
+        <Col span="3" offset="1">
+          <Button type="warning"><router-link to="/add/net">新增</router-link></Button>
+          <Button type="warning">导出</Button>
+        </Col>
+      </Row>
+    </Form>
     <Table stripe :columns="columns1" :data="dataTable"></Table>
     <Page class-name="pageBox" :total="pageObj.total" :current="pageObj.current_page" :page-size="pageObj.per_page" show-elevator></Page>
     <div class="clear"></div>
@@ -23,40 +54,32 @@
             key: 'id'
           },
           {
-            title: '车牌号',
-            key: 'plate_num'
-          },
-          {
-            title: '车型',
-            key: 'car_type'
-          },
-          {
             title: '城市',
             key: 'city'
           },
           {
-            title: '车辆状态',
+            title: '网点名称',
+            key: 'name'
+          },
+          {
+            title: '详细地址',
+            key: 'city'
+          },
+          {
+            title: '车位数',
             key: 'car_state'
           },
           {
-            title: '在线状态',
-            key: 'online_state'
+            title: '电桩数',
+            key: 'address'
           },
           {
-            title: '使用状态',
-            key: 'use_state'
+            title: '类型',
+            key: 'type'
           },
           {
-            title: '电量',
-            key: 'electricity'
-          },
-          {
-            title: '剩余续航里程(KM)',
-            key: 'left_mileage'
-          },
-          {
-            title: '终端状态',
-            key: 'terminal_state'
+            title: '状态',
+            key: 'state'
           },
           {
             title: '操作',
@@ -105,7 +128,7 @@
     },
     methods: {
       getCarList () {
-        GX.getJson('/backend/cars', {}, (res) => {
+        GX.getJson('/backend/garages', {}, (res) => {
           if (res.result === 0) {
             this.dataTable = res.content.data
             this.pageObj.total = res.content.total
