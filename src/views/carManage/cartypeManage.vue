@@ -23,7 +23,7 @@
       </Row>
     </Form>
     <Modal v-model="showAdd" title="新增车型" @on-ok="addType">
-      <Form :label-width="80">
+      <Form :label-width="80" :rules="ruleValidate">
         <Form-item label="输入框">
           <Input v-model="name" placeholder="请输入"></Input>
         </Form-item>
@@ -64,18 +64,20 @@
             fixed: 'right',
             render (h, params) {
               return h('div', [
-                h('Icon', {
+                h('Button', {
                   props: {
-                    type: 'ios-eye',
-                    size: '22'
+                    type: 'primary',
+                    size: 'small'
                   },
                   style: {
                     marginRight: '5px'
                   },
-                  onClick () {
-                    console.log('fsdfsdf')
+                  on: {
+                    click: () => {
+                      // this.editType(params.index)
+                    }
                   }
-                }),
+                }, '编辑'),
                 h('Icon', {
                   props: {
                     type: 'trash-a',
@@ -86,6 +88,11 @@
             }
           }
         ],
+        ruleValidate: {
+          name: [
+            { required: true, message: '类型不能为空', trigger: 'blur' }
+          ]
+        },
         dataTable: [],
         pageObj: {
           total: 1,
@@ -93,6 +100,7 @@
           per_page: 20
         },
         showAdd: false,
+        editName: '',
         name: ''
       }
     },
@@ -119,6 +127,12 @@
             this.showAdd = false
             this.getCarList()
           }
+        })
+      },
+      editType (index) {
+        this.$Modal.info({
+          title: '用户信息',
+          content: `姓名：7878`
         })
       }
     },
