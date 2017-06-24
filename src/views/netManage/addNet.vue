@@ -3,38 +3,36 @@
     <Form  :label-width="120">
       <Row :gutter="16">
         <Col span="6">
-          <Form-item label="车牌号">
-            <Input placeholder="请输入车牌号" v-model="formData.plate"></Input>
+          <Form-item label="网点名称">
+            <Input placeholder="请输入网点名称"></Input>
           </Form-item>
         </Col>
         <Col span="6">
-          <Form-item label="车型">
-            <Select placeholder="请选择" v-model="formData.typeID" v-if="typeList">
-              <Option v-for="item in typeList" :value="item.name" :key="item">{{item.name}}</Option>
-            </Select>
+          <Form-item label="网点名称">
+            <Input placeholder="请输入网点名称"></Input>
           </Form-item>
         </Col>
         <Col span="6">
-          <Form-item label="车架号" v-model="formData.vinNo">
-            <Input placeholder="请输入车牌号"></Input>
+          <Form-item label="详细地址">
+            <Input placeholder="请输入详细地址"></Input>
           </Form-item>
         </Col>
         <Col span="6">
-          <Form-item label="发动机号" v-model="formData.engineNo">
-            <Input placeholder="请输入发动机号"></Input>
+          <Form-item label="车位数">
+            <Input placeholder="请输入车位数"></Input>
           </Form-item>
         </Col>
       </Row>
 
       <Row :gutter="16">
         <Col span="6">
-          <Form-item label="座位数" v-model="formData.seatCount">
-            <Input placeholder="请输入座位数"></Input>
+          <Form-item label="电桩数">
+            <Input placeholder="请输入电桩数"></Input>
           </Form-item>
         </Col>
         <Col span="6">
-          <Form-item label="城市">
-            <Select placeholder="请选择" v-model="formData.cityId">
+          <Form-item label="类型">
+            <Select placeholder="请选择">
               <Option value="3">北京市</Option>
               <Option value="4">上海市</Option>
               <Option value="7">深圳市</Option>

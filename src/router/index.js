@@ -107,6 +107,24 @@ const routers = [
             resolve(require('../views/memberManage/memberCheck.vue'))
           })
         }
+      }, {
+        // 网点管理
+        path: '/net/list',
+        name: 'netList',
+        component (resolve) {
+          require.ensure(['../views/netManage/netList.vue'], () => {
+            resolve(require('../views/netManage/netList.vue'))
+          })
+        }
+      }, {
+        // 新增网点
+        path: '/add/net',
+        name: 'addNet',
+        component (resolve) {
+          require.ensure(['../views/netManage/addNet.vue'], () => {
+            resolve(require('../views/netManage/addNet.vue'))
+          })
+        }
       }
     ]
   }, {

@@ -34,6 +34,15 @@
           <Menu-item name="10-2"><router-link to="/member/check">认证审核</router-link></Menu-item>
         </Submenu>
 
+        <Submenu name="16">
+          <template slot="title">
+            <Icon type="stats-bars"></Icon>
+              网点管理
+          </template>
+          <Menu-item name="16-1"><router-link to="/net/list">网点列表</router-link></Menu-item>
+          <Menu-item name="16-2"><router-link to="/">网点详情</router-link></Menu-item>
+        </Submenu>
+
         <Submenu name="3">
           <template slot="title">
               <Icon type="stats-bars"></Icon>
@@ -41,6 +50,7 @@
           </template>
           <Menu-item name="3-1"><router-link to="/">充电列表</router-link></Menu-item>
           <Menu-item name="3-2"><router-link to="/">充电详情</router-link></Menu-item>
+          <Menu-item name="3-2"><router-link to="/">还车范围规范</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="4">
@@ -60,12 +70,9 @@
               <Icon type="stats-bars"></Icon>
               违章管理
           </template>
-          <Menu-item name="4-1"><router-link to="/illegal/list">违章列表</router-link></Menu-item>
-          <Menu-item name="4-2"><router-link to="/">新增违章</router-link></Menu-item>
-          <Menu-item name="4-3"><router-link to="/illegal/detail">违章详情</router-link></Menu-item>
-          <Menu-item name="4-4"><router-link to="/">保养详情</router-link></Menu-item>
-          <Menu-item name="4-5"><router-link to="/">维修详情</router-link></Menu-item>
-          <Menu-item name="4-6"><router-link to="/">保险详情</router-link></Menu-item>
+          <Menu-item name="4-1"><router-link to="/illegal/manage">违章列表</router-link></Menu-item>
+          <Menu-item name="4-2"><router-link to="/">违章详情</router-link></Menu-item>
+          <Menu-item name="4-3"><router-link to="/">新增违章</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="5">
