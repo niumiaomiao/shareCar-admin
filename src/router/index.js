@@ -45,9 +45,18 @@ const routers = [
           })
         }
       }, {
-        // 违章管理
-        path: '/illegal/manage',
-        name: 'illegalManage',
+        // 违章列表
+        path: '/illegal/list',
+        name: 'illegalList',
+        component (resolve) {
+          require.ensure(['../views/illegalManage/illegalList.vue'], () => {
+            resolve(require('../views/illegalManage/illegalList.vue'))
+          })
+        }
+      }, {
+        // 违章详情
+        path: '/illegal/detail',
+        name: 'illegalDetail',
         component (resolve) {
           require.ensure(['../views/illegalManage/illegalDetail.vue'], () => {
             resolve(require('../views/illegalManage/illegalDetail.vue'))
