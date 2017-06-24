@@ -70,11 +70,21 @@
           <div>评证图片：</div>
           <div style="padding-left:50px;padding-right:50px;">
             <div>
-              <img id="u6188_img" class="img " src="images/u4855.png">
+              <img src="">
             </div>
           </div>
       </Col>
     </Row><br/>
+    <Row :gutter="16">
+      <Col>
+          <div style="float:right;padding-right:10px;">创建日期：2016.01.01</div>
+      </Col>
+    </Row>
+    <Row :gutter="16">
+      <Col>
+          <div style="float:right;padding-right:10px;">更新日期：2016.01.01</div>
+      </Col>
+    </Row>
   </div>
 </template>
 
