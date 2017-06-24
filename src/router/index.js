@@ -54,6 +54,15 @@ const routers = [
           })
         }
       }, {
+        // 违章列表
+        path: '/illegal/add',
+        name: 'illegalAdd',
+        component (resolve) {
+          require.ensure(['../views/illegalManage/illegalAdd.vue'], () => {
+            resolve(require('../views/illegalManage/illegalAdd.vue'))
+          })
+        }
+      }, {
         // 违章详情
         path: '/illegal/detail',
         name: 'illegalDetail',
@@ -105,24 +114,6 @@ const routers = [
         component (resolve) {
           require.ensure(['../views/memberManage/memberCheck.vue'], () => {
             resolve(require('../views/memberManage/memberCheck.vue'))
-          })
-        }
-      }, {
-        // 网点管理
-        path: '/net/list',
-        name: 'netList',
-        component (resolve) {
-          require.ensure(['../views/netManage/netList.vue'], () => {
-            resolve(require('../views/netManage/netList.vue'))
-          })
-        }
-      }, {
-        // 新增网点
-        path: '/add/net',
-        name: 'addNet',
-        component (resolve) {
-          require.ensure(['../views/netManage/addNet.vue'], () => {
-            resolve(require('../views/netManage/addNet.vue'))
           })
         }
       }

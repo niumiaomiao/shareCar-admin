@@ -2,32 +2,44 @@
   <div>
     <Form  :label-width="80">
       <Row :gutter="16">
-        <Col span="6">
-          <Form-item label="姓名">
+        <Col span="4">
+          <Form-item label="车牌号">
             <Input placeholder="请输入"></Input>
           </Form-item>
         </Col>
-        <Col span="6">
-          <Form-item label="手机号">
+        <Col span="4">
+          <Form-item label="单据号">
             <Input placeholder="请输入"></Input>
           </Form-item>
         </Col>
-        <Col span="6">
-          <Form-item label="认证状态">
+        <Col span="4">
+          <Form-item label="处理状态">
             <Select placeholder="请选择">
-              <Option value="3">北京市</Option>
-              <Option value="4">上海市</Option>
-              <Option value="7">深圳市</Option>
+              <Option value="0">全部</Option>
+              <Option value="1">未处理</Option>
+              <Option value="2">处理完</Option>
             </Select>
           </Form-item>
         </Col>
         <Col span="6">
-            <div></div>
+          <Form-item label="违章时间">
+            <Date-picker type="date" placeholder="选择日期"></Date-picker>
+          </Form-item>
+        </Col>
+        <Col span="3">
+            <div>
+              <Button type="info">查询</Button>
+              <Button type="success">清空</Button>
+            </div>
+        </Col>
+        <Col span="3">
+          <Button type="warning" @click.native="showAdd = true">新增</Button>
+          <Button type="warning">导出</Button>
         </Col>
       </Row>
       <Row :gutter="16">
-        <Col span="6">
-          <Form-item label="押金状态">
+        <Col span="4">
+          <Form-item label="省市">
             <Select placeholder="请选择">
               <Option value="1">北京市</Option>
               <Option value="2">上海市</Option>
@@ -35,25 +47,14 @@
             </Select>
           </Form-item>
         </Col>
-        <Col span="6">
-          <Form-item label="用户状态">
+        <Col span="4">
+          <Form-item label="用车类型">
             <Select placeholder="请选择">
               <Option value="4">北京市</Option>
               <Option value="5">上海市</Option>
               <Option value="6">深圳市</Option>
             </Select>
           </Form-item>
-        </Col>
-        <Col span="6">
-          <Form-item label="注册时间">
-            <Date-picker type="date" placeholder="选择日期"></Date-picker>
-          </Form-item>
-        </Col>
-        <Col span="6">
-            <div>
-              <Button type="info">信息按钮</Button>
-              <Button type="success">成功按钮</Button>
-            </div>
         </Col>
       </Row>
     </Form>
@@ -70,62 +71,118 @@
       return {
         columns1: [
           {
-            title: '提醒',
-            key: 'id'
-          },
-          {
             title: '序号',
-            key: 'id'
+            width: 100,
+            type: 'index',
+            align: 'center'
           },
           {
-            title: '性别',
-            key: 'sex'
+            title: '订单号',
+            key: 'id',
+            width: 100,
+            align: 'center'
           },
           {
-            title: '出生年月',
-            key: 'birthday'
+            title: '车牌号',
+            key: 'birthday',
+            width: 100,
+            align: 'center'
           },
           {
-            title: '手机号',
-            key: 'phone'
+            title: '车型',
+            key: 'phone',
+            width: 100,
+            align: 'center'
           },
           {
-            title: '认证状态',
-            key: 'deposit_state'
+            title: '违章地点',
+            key: 'deposit_state',
+            width: 100,
+            align: 'center'
           },
           {
-            title: '认证姓名',
-            key: 'username'
+            title: '违章行为',
+            key: 'username',
+            width: 100,
+            align: 'center'
           },
           {
-            title: '押金状态',
-            key: 'verify_state'
+            title: '违章时间',
+            key: 'verify_state',
+            width: 100,
+            align: 'center'
           },
           {
-            title: '用户状态',
-            key: 'user_state'
+            title: '罚款金额(元)',
+            key: 'user_state',
+            width: 120,
+            align: 'center'
           },
           {
-            title: '订单数',
-            key: 'orders_count'
+            title: '扣分',
+            key: 'orders_count',
+            width: 100,
+            align: 'center'
           },
           {
-            title: '信用值',
-            key: 'credit_score'
+            title: '处理状态',
+            key: 'credit_score',
+            width: 100,
+            align: 'center'
           },
           {
-            title: '注册时间',
-            key: 'reg_date'
+            title: '处理方式',
+            key: 'reg_date',
+            width: 100,
+            align: 'center'
+          },
+          {
+            title: '用车类型',
+            key: 'user_state',
+            width: 100,
+            align: 'center'
+          },
+          {
+            title: '用车人',
+            key: 'orders_count',
+            width: 100,
+            align: 'center'
+          },
+          {
+            title: '操作人',
+            key: 'credit_score',
+            width: 100,
+            align: 'center'
+          },
+          {
+            title: '操作时间',
+            key: 'reg_date',
+            width: 100,
+            align: 'center'
           },
           {
             title: '操作',
             key: 'action',
+            width: 100,
+            align: 'center',
             fixed: 'right',
             render (h, params) {
               return h('div', [
                 h('Icon', {
                   props: {
                     type: 'ios-eye',
+                    size: '22'
+                  },
+                  style: {
+                    marginRight: '5px'
+                  },
+                  onClick () {
+                    console.log('fsdfsdf')
+                  }
+                }),
+                h('Icon', {
+                  props: {
+                    type: 'edit',
                     size: '22'
                   },
                   style: {

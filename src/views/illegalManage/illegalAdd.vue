@@ -1,7 +1,7 @@
 <template>
   <div>
     <Form  :label-width="120">
-      <Row :gutter="16">
+            <Row :gutter="16">
         <Col span="6">
           <Form-item label="订单号">
             <Input placeholder="请输入订单号" v-model="formData.plate"></Input>
@@ -46,72 +46,63 @@
           </Form-item>
         </Col>
       </Row>
-      <Row>
+
+      <Row :gutter="16">
         <Col span="6">
           <Form-item label="处理状态">
-            <Input v-model="formData.TCICompany" placeholder="请输入交强险保险公司"></Input>
+            <Select placeholder="请选择" v-model="formData.cityId">
+              <Option value="3">未处理</Option>
+              <Option value="4">处理中</Option>
+              <Option value="7">已处理</Option>
+            </Select>
           </Form-item>
         </Col>
         <Col span="6">
-          <Form-item label="交强保单号">
-            <Input v-model="formData.TCIBillNo" placeholder="请输入交强保单号"></Input>
+          <Form-item label="用车类型">
+            <Select placeholder="请选择" v-model="formData.cityId">
+              <Option value="3">订单用车</Option>
+              <Option value="4">高度用车</Option>
+            </Select>          
           </Form-item>
         </Col>
         <Col span="6">
-          <Form-item label="投保日期">
-            <Date-picker v-model="formData.TCIStartDate" type="date" placeholder="选择日期"></Date-picker>
-          </Form-item>
-        </Col>
-        <Col span="6">
-          <Form-item label="有效保险期">
-            <Date-picker v-model="formData.TCIEndDate" type="date" placeholder="选择日期"></Date-picker>
+          <Form-item label="用车人" v-model="formData.color">
+            <Input placeholder="请输入罚款金额"></Input>
           </Form-item>
         </Col>
       </Row>
-      <Row>
+
+      <Row :gutter="16">
         <Col span="6">
-          <Form-item label="商业险保险公司">
-            <Input v-model="formData.VCICompany" placeholder="请输入商业险保险公司"></Input>
+          <Form-item label="处理方式" v-model="formData.seatCount">
+            <Select placeholder="请选择" v-model="formData.cityId">
+              <Option value="3">自行处理</Option>
+              <Option value="4">代办处理</Option>
+            </Select>
           </Form-item>
         </Col>
         <Col span="6">
-          <Form-item label="商业险保单号">
-            <Input v-model="formData.VCIBillNo" placeholder="请输入商业险保单号"></Input>
+          <Form-item label="代办费用">
+            <Input placeholder="代办费用"></Input>
           </Form-item>
         </Col>
         <Col span="6">
-          <Form-item label="投保日期">
-            <Date-picker v-model="formData.VCIStartDate" type="date" placeholder="选择日期"></Date-picker>
-          </Form-item>
-        </Col>
-        <Col span="6">
-          <Form-item label="有效保险期">
-            <Date-picker v-model="formData.VCIEndDate" type="date" placeholder="选择日期"></Date-picker>
+          <Form-item label="超时费用" v-model="formData.color">
+            <Input placeholder="请输入超时费用"></Input>
           </Form-item>
         </Col>
       </Row>
-      <Row>
-        <Col span="24" class="small-title">相关照片:</Col>
-        <Col span="10">
-          <Form-item label="车辆照片">
-            <Upload
-            multiple
-            type="drag"
-            :format="['jpg','jpeg','png']"
-            :max-size="2048"
-            action="//jsonplaceholder.typicode.com/posts/">
-            <div style="padding: 20px 0">
-              <Icon type="ios-cloud-upload" size="52" style="color: #3399ff"></Icon>
-              <p>点击上传车辆照片</p>
-            </div>
-          </Upload>
-          </Form-item>
-        </Col>
-      </Row>
-      <Row>
-        <Col span="10">
-          <Form-item label="车辆证件照片">
-            <Upload
+      <Row :gutter="16">
+      <Col>
+        <Form-item label="备注信息" v-model="formData.color">
+        <Input v-model="value5" type="textarea" placeholder="请输入备注信息" :rows="6"></Input>
+        </Form-item>
+      </Col>
+    </Row><br/>
+    <Row :gutter="16">
+      <Col span="10">
+        <Form-item label="评证图片" v-model="formData.color">
+          <Upload
               multiple
               type="drag"
               :format="['jpg','jpeg','png']"
@@ -122,24 +113,9 @@
                 <p>点击上传车辆证件照片</p>
               </div>
             </Upload>
-          </Form-item>
-        </Col>
-      </Row>
-      <Row>
-        <Col span="20">
-          <Form-item label="备注信息">
-            <Input v-model="formData.remark" type="textarea" :autosize="{minRows: 3,maxRows: 8}" placeholder="请输入备注信息"></Input>
-          </Form-item>
-        </Col>
-      </Row>
-      <Row>
-        <Col span="6" offset="15">
-          <Form-item>
-            <Button type="primary" @click.native="addCar">提交</Button>
-            <Button type="ghost" style="margin-left: 8px">取消</Button>
-          </Form-item>
-        </Col>
-      </Row>
+        </Form-item>
+      </Col>
+    </Row><br/>
     </Form>
   </div>
 </template>

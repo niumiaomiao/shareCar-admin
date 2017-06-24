@@ -70,9 +70,9 @@
               <Icon type="stats-bars"></Icon>
               违章管理
           </template>
-          <Menu-item name="4-1"><router-link to="/illegal/manage">违章列表</router-link></Menu-item>
-          <Menu-item name="4-2"><router-link to="/">违章详情</router-link></Menu-item>
-          <Menu-item name="4-3"><router-link to="/">新增违章</router-link></Menu-item>
+          <Menu-item name="4-1"><router-link to="/illegal/list">违章列表</router-link></Menu-item>
+          <Menu-item name="4-2"><router-link to="/illegal/detail">违章详情</router-link></Menu-item>
+          <Menu-item name="4-3"><router-link to="/illegal/add">新增违章</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="5">
