@@ -41,6 +41,7 @@
           </template>
           <Menu-item name="16-1"><router-link to="/net/list">网点列表</router-link></Menu-item>
           <Menu-item name="16-2"><router-link to="/">网点详情</router-link></Menu-item>
+          <Menu-item name="16-2"><router-link to="/add/charge">新增充电桩页</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="3">
