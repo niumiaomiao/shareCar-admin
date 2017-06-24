@@ -12,6 +12,17 @@
           <Menu-item name="1-3"><router-link to="/fixprice/manage">定价管理</router-link></Menu-item>
         </Submenu>
 
+        <Submenu name="2">
+          <template slot="title">
+              <Icon type="ios-people"></Icon>
+              车辆信息管理
+          </template>
+          <Menu-item name="2-4"><router-link to="/carinfo/manage">车辆信息列表</router-link></Menu-item>
+          <Menu-item name="2-1"><router-link to="/">地图显示</router-link></Menu-item>
+          <Menu-item name="2-2"><router-link to="/">车辆详情</router-link></Menu-item>
+          <Menu-item name="2-3"><router-link to="/">车辆记录</router-link></Menu-item>
+        </Submenu>
+
         <Submenu name="10">
           <template slot="title">
               <Icon type="stats-bars"></Icon>
@@ -20,16 +31,6 @@
           <Menu-item name="10-3"><router-link to="/member/list">会员列表</router-link></Menu-item>
           <Menu-item name="10-1"><router-link to="/member/detail">会员详情</router-link></Menu-item>
           <Menu-item name="10-2"><router-link to="/member/check">认证审核</router-link></Menu-item>
-        </Submenu>
-
-        <Submenu name="2">
-          <template slot="title">
-              <Icon type="ios-people"></Icon>
-              车辆信息管理
-          </template>
-          <Menu-item name="2-1"><router-link to="/">地图显示</router-link></Menu-item>
-          <Menu-item name="2-2"><router-link to="/">车辆详情</router-link></Menu-item>
-          <Menu-item name="2-3"><router-link to="/">车辆记录</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="3">

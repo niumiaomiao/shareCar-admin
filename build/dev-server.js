@@ -32,7 +32,7 @@ compiler.plugin('compilation', function (compilation) {
 })
 
 // proxy api requests （https://github.com/chimurai/http-proxy-middleware）
-app.use(proxyMiddleware('/backend', {target: 'https://dev.yunzujia.com.cn/', changeOrigin: true}))
+app.use(proxyMiddleware('/backend', {target: 'http://dev.yunzujia.com.cn/', changeOrigin: true}))
 // handle fallback for HTML5 history API
 app.use(require('connect-history-api-fallback')())
 
