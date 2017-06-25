@@ -1,19 +1,9 @@
 <template>
   <div>
-    <nav-bar title="网点列表"></nav-bar>
+    <nav-bar title="城市管理"></nav-bar>
     <Form :label-width="80">
       <Row :gutter="16">
-        <Col span="4">
-          <Form-item label="城市">
-            <Input placeholder="请输入"></Input>
-          </Form-item>
-        </Col>
-        <Col span="4">
-          <Form-item label="网点名称">
-            <Input placeholder="请输入网点名称"></Input>
-          </Form-item>
-        </Col>
-        <Col span="4">
+        <Col span="8">
           <Form-item label="车型选择">
             <Select placeholder="请选择" style="width: 120px">
               <Option value="beijing">北京市</Option>
@@ -22,19 +12,18 @@
             </Select>
           </Form-item>
         </Col>
-        <Col span="3" offset="3">
+        <Col span="4" offset="4">
           <Button type="info">查询</Button>
           <Button type="success">清空</Button>
         </Col>
-        <Col span="3" offset="1">
-          <Button type="warning"><router-link to="/add/net">新增</router-link></Button>
+        <Col span="4" offset="3">
+          <Button type="warning" @click.native="showAdd = true">新增</Button>
           <Button type="warning">导出</Button>
         </Col>
       </Row>
     </Form>
     <Table stripe :columns="columns1" :data="dataTable"></Table>
     <Page class-name="pageBox" :total="pageObj.total" :current="pageObj.current_page" :page-size="pageObj.per_page" show-elevator></Page>
-    <div class="clear"></div>
   </div>
 </template>
 
@@ -46,40 +35,64 @@
       return {
         columns1: [
           {
-            title: '提醒',
-            key: 'car_state'
-          },
-          {
             title: '序号',
             key: 'id'
+          },
+          {
+            title: '订单号',
+            key: 'orderNo'
           },
           {
             title: '城市',
             key: 'city'
           },
           {
-            title: '网点名称',
-            key: 'name'
+            title: '车牌号',
+            key: 'plate'
           },
           {
-            title: '详细地址',
-            key: 'city'
+            title: '车型',
+            key: 'car_type'
           },
           {
-            title: '车位数',
-            key: 'car_state'
+            title: '手机号',
+            key: 'phone'
           },
           {
-            title: '电桩数',
-            key: 'address'
+            title: '取车网点名称',
+            key: 'start_garage'
           },
           {
-            title: '类型',
-            key: 'type'
+            title: '还车网点名称',
+            key: 'end_garage'
           },
           {
-            title: '状态',
-            key: 'state'
+            title: '订单状态',
+            key: 'order_state'
+          },
+          {
+            title: '订单金额',
+            key: 'totalMoney'
+          },
+          {
+            title: '支付状态',
+            key: 'payment'
+          },
+          {
+            title: '已抵扣金额',
+            key: 'discountMoney'
+          },
+          {
+            title: '时长',
+            key: 'usingLength'
+          },
+          {
+            title: '开始时间',
+            key: 'startTime'
+          },
+          {
+            title: '结束时间',
+            key: 'endTime'
           },
           {
             title: '操作',
@@ -87,20 +100,15 @@
             fixed: 'right',
             render (h, params) {
               return h('div', [
-                h('Button', {
+                h('Icon', {
                   props: {
-                    type: 'primary',
-                    size: 'small'
+                    type: 'ios-eye',
+                    size: '22'
                   },
                   style: {
                     marginRight: '5px'
-                  },
-                  on: {
-                    click: () => {
-                      console.log('点击')
-                    }
                   }
-                }, '查看'),
+                }),
                 h('Icon', {
                   props: {
                     type: 'trash-a',
@@ -120,16 +128,16 @@
       }
     },
     mounted () {
-      this.getCarList()
+      this.getCityList()
     },
     methods: {
-      getCarList () {
-        GX.getJson('/backend/garages', {}, (res) => {
+      getCityList () {
+        GX.getJson('/backend/orders', {}, (res) => {
           if (res.result === 0) {
             this.dataTable = res.content.data
             this.pageObj.total = res.content.total
             this.pageObj.current_page = res.content.current_page
-            this.pageObj.per_page = res.content.per_page
+            this.pageObj.per_page = parseInt(res.content.per_page)
           } else {
             this.$Message.warning(res.content.message)
           }
@@ -141,14 +149,3 @@
     }
   }
 </script>
-
-<style>
-  .pageBox {
-    margin-top: 20px;
-    float: right;
-    margin-right: 20px;
-  }
-  .clear {
-    clear: both;
-  }
-</style>

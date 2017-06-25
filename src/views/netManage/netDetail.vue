@@ -1,80 +1,73 @@
 <template>
   <div>
     <Row :gutter="16">
-      <Col span="24" class="first-title">车辆信息</Col><br/> 
-      <Col span="24" class="small-title">基本信息</Col><br/>
+      <Col span="24" class="first-title">网点详情</Col><br/>
       <Col span="6">
-          <div>头像：<img :src="dataObj.face"></div>
+          <div>网点名称：</div>
       </Col>
       <Col span="6">
-          <div>性别：{{dataObj.sex}}</div>
+          <div>城市：</div>
       </Col>
       <Col span="6">
-          <div>电话：{{dataObj.phone}}</div>
+          <div>详细地址：</div>
       </Col>
       <Col span="6">
-          <div>出生年月：{{dataObj.birthday}}</div>
-      </Col>
-    </Row><br/>
-    <Row :gutter="16">
-      <Col span="6">
-          <div>注册时间：{{dataObj.reg_time}}</div>
-      </Col>
-      <Col span="6">
-          <div>用户状态：{{dataObj.user_state}}</div>
-      </Col>
-      <Col span="6">
-          <div>绑定微信号：{{dataObj.weixin}}</div>
-      </Col>
-      <Col span="6">
-          <div>押金状态: {{dataObj.deposit_state}}</div>
+          <div>车位数：</div>
       </Col>
     </Row><br/>
     <Row :gutter="16">
       <Col span="6">
-          <div>余额：{{dataObj.money}}</div>
+          <div>电桩数：</div>
       </Col>
       <Col span="6">
-          <div>押金：{{dataObj.deposit}}</div>
+          <div>营业时间：</div>
       </Col>
       <Col span="6">
-          <div>订单数：{{dataObj.order_count}}</div>
+          <div>网点租金：</div>
       </Col>
       <Col span="6">
-          <div>信用值：{{dataObj.credit_score}}</div>
+          <div>网点电费：</div>
+      </Col>
+    </Row><br/>
+    <Row :gutter="16">
+      <Col span="6">
+          <div>类型：{{dataObj.money}}</div>
+      </Col>
+      <Col span="6">
+          <div>合作结束日期：{{dataObj.deposit}}</div>
+      </Col>
+      <Col span="6">
+          <div>网点付款方式：{{dataObj.order_count}}</div>
+      </Col>
+      <Col span="6">
+          <div>联系人：</div>
       </Col>
     </Row><br/>
     <Row>
-      <Col span="6">违章记录：{{dataObj.peccancy_count}}</Col>
-    </Row><br/>
-    <Row>
-      <Col span="24" class="small-title">认证信息</Col><br/>
-      <Col span="6">
-          <div>认证状态：{{dataObj.verify_state}}</div>
-      </Col>
-      <Col span="6">
-          <div>认证姓名：{{dataObj.username}}</div>
-      </Col>
-      <Col span="6">
-          <div>身份证号：{{dataObj.id_card}}</div>
-      </Col>
-      <Col span="6">
-          <div>身份证有效期：{{dataObj.id_card_expire}}</div>
-      </Col>
+      <Col span="6">联系电话：{{dataObj.peccancy_count}}</Col>
     </Row><br/>
     <Row>
       <Col span="6">
-          <div>驾驶证有效期：{{dataObj.driver_license_expire}}</div>
+          <div>状态：{{dataObj.verify_state}}</div>
       </Col>
       <Col span="6">
-          <div>驾驶证类型：{{dataObj.driver_license_type}}</div>
+          <div>启用/停用时间：{{dataObj.username}}</div>
+      </Col>
+      <Col span="6">
+          <div>操作人：{{dataObj.id_card}}</div>
+      </Col>
+      <Col span="6">
+         
       </Col>
     </Row><br/>
     <Row>
-      <!-- <Col span="24">认证图片：<img v-for="item in verify_images" :src="item"></Col> -->
-    </Row><br/>
+      <Col span="24">网点照片<img :src="item"></Col>
+    </Row>
     <Row>
-      <Col span="24">审核备注：{{dataObj.verify_remark}}</Col>
+      <Col span="24">还车范围<img :src="item"></Col>
+    </Row>
+    <Row>
+      <Col span="24">审核备注：</Col>
     </Row>
   </div>
 </template>

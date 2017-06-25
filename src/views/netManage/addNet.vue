@@ -140,7 +140,8 @@
       addCar () {
         GX.postJson('/backend/garages', this.formData, (res) => {
           if (res.result === 0) {
-            this.$Message.seccess('添加网点成功')
+            this.$Message.success('添加网点成功')
+            this.$route.push({ path: '/net/list' })
           } else {
             this.$Message.warning(res.message)
           }

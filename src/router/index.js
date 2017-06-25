@@ -161,6 +161,60 @@ const routers = [
             resolve(require('../views/memberManage/memberCheck.vue'))
           })
         }
+      }, {
+        // 网点列表
+        path: '/net/list',
+        name: 'netList',
+        component (resolve) {
+          require.ensure(['../views/netManage/netList.vue'], () => {
+            resolve(require('../views/netManage/netList.vue'))
+          })
+        }
+      }, {
+        // 新增网点
+        path: '/add/net',
+        name: 'addNet',
+        component (resolve) {
+          require.ensure(['../views/netManage/addNet.vue'], () => {
+            resolve(require('../views/netManage/addNet.vue'))
+          })
+        }
+      }, {
+        // 充电桩列表
+        path: '/charge/list',
+        name: 'chargeList',
+        component (resolve) {
+          require.ensure(['../views/chargeManage/chargeList.vue'], () => {
+            resolve(require('../views/chargeManage/chargeList.vue'))
+          })
+        }
+      }, {
+        //  新加冲电桩
+        path: '/add/charge',
+        name: 'addCharge',
+        component (resolve) {
+          require.ensure(['../views/chargeManage/addCharge.vue'], () => {
+            resolve(require('../views/chargeManage/addCharge.vue'))
+          })
+        }
+      }, {
+        //  订单列表页
+        path: '/order/list',
+        name: 'orderList',
+        component (resolve) {
+          require.ensure(['../views/orderManage/orderList.vue'], () => {
+            resolve(require('../views/orderManage/orderList.vue'))
+          })
+        }
+      }, {
+        //  订单详情页
+        path: '/order/detail',
+        name: 'orderDetail',
+        component (resolve) {
+          require.ensure(['../views/orderManage/orderDetail.vue'], () => {
+            resolve(require('../views/orderManage/orderDetail.vue'))
+          })
+        }
       }
     ]
   }, {

@@ -25,66 +25,62 @@
     <Modal v-model="showAdd" title="新增定价列表" @on-ok="addFix">
       <Form :label-width="80">
         <Form-item label="所属省份">
-          <Select placeholder="请选择" style="width: 120px">
-            <Option value="beijing">北京市</Option>
-            <Option value="shanghai">上海市</Option>
-            <Option value="shenzhen">深圳市</Option>
+          <Select placeholder="请选择" v-if="provice.length">
+            <Option v-for="item in provice" :value="item.province_id" :key="item">{{item.name}}</Option>
           </Select>
         </Form-item>
         <Form-item label="城市名称">
-          <Select placeholder="请选择" style="width: 120px">
+          <Select placeholder="请选择" v-model="formData.cityID">
             <Option value="beijing">北京市</Option>
             <Option value="shanghai">上海市</Option>
             <Option value="shenzhen">深圳市</Option>
           </Select>
         </Form-item>
         <Form-item label="县名称">
-          <Select placeholder="请选择" style="width: 120px">
+          <Select placeholder="请选择" v-model="formData.countryID">
             <Option value="beijing">北京市</Option>
             <Option value="shanghai">上海市</Option>
             <Option value="shenzhen">深圳市</Option>
           </Select>
         </Form-item>
-        <Form-item label="县名称">
+        <!-- <Form-item label="县级以下">
           <Input v-model="name" placeholder="请输入县名称"></Input>
-        </Form-item>
+        </Form-item> -->
         <Form-item label="车型">
-          <Select placeholder="请选择" style="width: 120px">
-            <Option value="beijing">北京市</Option>
-            <Option value="shanghai">上海市</Option>
-            <Option value="shenzhen">深圳市</Option>
+          <Select placeholder="请选择" v-model="formData.carTypeID">
+            <Option v-for="item in typeList" :value="item.id" :key="item">{{item.name}}</Option>
           </Select>
         </Form-item>
         <Form-item label="计费方式">
-          <Select placeholder="请选择" style="width: 120px">
-            <Option value="beijing">北京市</Option>
-            <Option value="shanghai">上海市</Option>
-            <Option value="shenzhen">深圳市</Option>
+          <Select placeholder="请选择" v-model="formData.feetype">
+            <Option value="1">计时</Option>
+            <Option value="2">计时＋公里</Option>
           </Select>
         </Form-item>
         <Form-item label="时间段">
-          <Select placeholder="请选择" style="width: 120px">
-            <Option value="beijing">北京市</Option>
-            <Option value="shanghai">上海市</Option>
-            <Option value="shenzhen">深圳市</Option>
+          <Select placeholder="请选择">
+            <Option value="1">日间档</Option>
+            <Option value="2">夜间档</Option>
+            <option value="3">晚上包车</option>
+            <option value="4">全天用车</option>
           </Select>
         </Form-item>
         <Form-item label="每小时价格">
-          <Input v-model="name" placeholder="请输入每小时价格"></Input>
+          <Input v-model="hourPrice" placeholder="请输入每小时价格"></Input>
         </Form-item>
-        <Form-item label="每公里价格">
-          <Input v-model="name" placeholder="请输入每公里价格"></Input>
+        <Form-item label="每公里价格" v-show="formData.feetype == '2'">
+          <Input v-model="kiloPrice" placeholder="请输入每公里价格"></Input>
         </Form-item>
         <Form-item label="晚上包车">
-          <Input v-model="name" placeholder="请输入价格"></Input>
+          <Input v-model="priceContent.night" placeholder="请输入价格"></Input>
         </Form-item>
         <Form-item label="全天用车">
-          <Input v-model="name" placeholder="请输入价格"></Input>
+          <Input v-model="priceContent.day" placeholder="请输入价格"></Input>
         </Form-item>
         <Form-item label="打包价">
-          2-3天<Input v-model="name" placeholder="请输入价格"></Input><br/>
-          4-5天<Input v-model="name" placeholder="请输入价格"></Input><br/>
-          6-7天<Input v-model="name" placeholder="请输入价格"></Input>
+          2-3天<Input placeholder="请输入价格"></Input><br/>
+          4-5天<Input placeholder="请输入价格"></Input><br/>
+          6-7天<Input placeholder="请输入价格"></Input>
         </Form-item>
       </Form>
     </Modal>
@@ -163,11 +159,45 @@
           current_page: 1,
           per_page: 20
         },
-        showAdd: false
+        showAdd: false,
+        // 省份
+        provice: [],
+        // 小时价格
+        hourPrice: 0,
+        kiloPrice: 0,
+        // 小时
+        hourStyle: [],
+        kiloStyle: [],
+        // 计价方式JSON
+        priceContent: {},
+        formData: {
+          cityID: '',
+          countryID: '',
+          feetype: ''
+        },
+        // 车型
+        typeList: []
       }
     },
     mounted () {
       this.getCarList()
+      GX.getJson('/backend/regions', {}, (res) => {
+        if (res.result === 0) {
+          res.content.map(val => {
+            let proObj = {}
+            proObj.name = val.name
+            proObj.province_id = val.province_id
+            this.provice.push(proObj)
+          })
+        }
+      })
+      GX.getJson('/backend/car/type', {}, (res) => {
+        if (res.result === 0) {
+          res.content.data.map(val => {
+            this.typeList.push(val)
+          })
+        }
+      })
     },
     methods: {
       getCarList () {

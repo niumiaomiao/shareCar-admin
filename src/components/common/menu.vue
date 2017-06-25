@@ -41,7 +41,24 @@
           </template>
           <Menu-item name="16-1"><router-link to="/net/list">网点列表</router-link></Menu-item>
           <Menu-item name="16-2"><router-link to="/">网点详情</router-link></Menu-item>
-          <Menu-item name="16-2"><router-link to="/add/charge">新增充电桩页</router-link></Menu-item>
+        </Submenu>
+
+        <Submenu name="9">
+          <template slot="title">
+              <Icon type="stats-bars"></Icon>
+              充电桩管理
+          </template>
+          <Menu-item name="9-6"><router-link to="/charge/list">充电桩管理</router-link></Menu-item>
+          <Menu-item name="9-7"><router-link to="/add/charge">新增充电桩</router-link></Menu-item>
+        </Submenu>
+
+        <Submenu name="7">
+          <template slot="title">
+              <Icon type="stats-bars"></Icon>
+              订单管理
+          </template>
+          <Menu-item name="7-1"><router-link to="/order/list">订单列表</router-link></Menu-item>
+          <Menu-item name="7-2"><router-link to="/order/detail">订单详情</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="3">
@@ -101,15 +118,6 @@
           <Menu-item name="6-1"><router-link to="/">管理列表</router-link></Menu-item>
         </Submenu>
 
-        <Submenu name="7">
-          <template slot="title">
-              <Icon type="stats-bars"></Icon>
-              订单管理
-          </template>
-          <Menu-item name="7-1"><router-link to="/">订单列表</router-link></Menu-item>
-          <Menu-item name="7-2"><router-link to="/">订单详情</router-link></Menu-item>
-        </Submenu>
-
         <Submenu name="8">
           <template slot="title">
               <Icon type="stats-bars"></Icon>
@@ -117,21 +125,6 @@
           </template>
           <Menu-item name="8-1"><router-link to="/">设备管理</router-link></Menu-item>
           <Menu-item name="8-2"><router-link to="/">SIM管理</router-link></Menu-item>
-        </Submenu>
-
-        <Submenu name="9">
-          <template slot="title">
-              <Icon type="stats-bars"></Icon>
-              网点
-          </template>
-          <Menu-item name="9-1"><router-link to="/">网点管理</router-link></Menu-item>
-          <Menu-item name="9-2"><router-link to="/">新增网点</router-link></Menu-item>
-          <Menu-item name="9-3"><router-link to="/">还车范围规划</router-link></Menu-item>
-          <Menu-item name="9-4"><router-link to="/">网点详情</router-link></Menu-item>
-          <Menu-item name="9-5"><router-link to="/">编辑网点详情</router-link></Menu-item>
-          <Menu-item name="9-6"><router-link to="/">充电桩管理</router-link></Menu-item>
-          <Menu-item name="9-7"><router-link to="/">新增充电桩</router-link></Menu-item>
-          <Menu-item name="9-8"><router-link to="/">编辑充电桩</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="11">

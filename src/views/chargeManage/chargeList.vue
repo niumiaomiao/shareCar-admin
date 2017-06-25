@@ -1,9 +1,29 @@
 <template>
   <div>
-    <nav-bar title="车辆信息管理"></nav-bar>
+    <nav-bar title="城市管理"></nav-bar>
+    <Form :label-width="80">
+      <Row :gutter="16">
+        <Col span="8">
+          <Form-item label="车型选择">
+            <Select placeholder="请选择" style="width: 120px">
+              <Option value="beijing">北京市</Option>
+              <Option value="shanghai">上海市</Option>
+              <Option value="shenzhen">深圳市</Option>
+            </Select>
+          </Form-item>
+        </Col>
+        <Col span="4" offset="4">
+          <Button type="info">查询</Button>
+          <Button type="success">清空</Button>
+        </Col>
+        <Col span="4" offset="3">
+          <Button type="warning" @click.native="showAdd = true">新增</Button>
+          <Button type="warning">导出</Button>
+        </Col>
+      </Row>
+    </Form>
     <Table stripe :columns="columns1" :data="dataTable"></Table>
     <Page class-name="pageBox" :total="pageObj.total" :current="pageObj.current_page" :page-size="pageObj.per_page" show-elevator></Page>
-    <div class="clear"></div>
   </div>
 </template>
 
@@ -15,48 +35,44 @@
       return {
         columns1: [
           {
-            title: '提醒',
-            key: 'car_state'
-          },
-          {
             title: '序号',
             key: 'id'
           },
           {
-            title: '车牌号',
-            key: 'plate_num'
+            title: '编号',
+            key: 'number'
           },
           {
-            title: '车型',
-            key: 'car_type'
+            title: '品牌',
+            key: 'brand'
+          },
+          {
+            title: '型号',
+            key: 'model'
+          },
+          {
+            title: '功率',
+            key: 'power'
+          },
+          {
+            title: '电桩类型',
+            key: 'type'
           },
           {
             title: '城市',
             key: 'city'
           },
           {
-            title: '车辆状态',
-            key: 'car_state'
+            title: '网点名称',
+            key: 'garage'
           },
           {
-            title: '在线状态',
-            key: 'online_state'
+            title: '状态',
+            key: 'status'
           },
           {
-            title: '使用状态',
-            key: 'use_state'
-          },
-          {
-            title: '电量',
-            key: 'electricity'
-          },
-          {
-            title: '剩余续航里程(KM)',
-            key: 'left_mileage'
-          },
-          {
-            title: '终端状态',
-            key: 'terminal_state'
+            title: '操作日期',
+            key: 'updated_at'
           },
           {
             title: '操作',
@@ -64,24 +80,15 @@
             fixed: 'right',
             render (h, params) {
               return h('div', [
-                h('Button', {
+                h('Icon', {
                   props: {
-                    type: 'primary',
-                    size: 'small'
+                    type: 'ios-eye',
+                    size: '22'
                   },
                   style: {
                     marginRight: '5px'
-                  },
-                  on: {
-                    click: () => {
-                      GX.postJson('/backend/cars/online', {car_id: params.row.id, online_state: params.row.online_state}, (res) => {
-                        if (res.result === 0) {
-                          console.log('更新成功')
-                        }
-                      })
-                    }
                   }
-                }, '上下线'),
+                }),
                 h('Icon', {
                   props: {
                     type: 'trash-a',
@@ -101,16 +108,16 @@
       }
     },
     mounted () {
-      this.getCarList()
+      this.getCityList()
     },
     methods: {
-      getCarList () {
-        GX.getJson('/backend/cars', {}, (res) => {
+      getCityList () {
+        GX.getJson('/backend/chargingPiles', {}, (res) => {
           if (res.result === 0) {
             this.dataTable = res.content.data
             this.pageObj.total = res.content.total
             this.pageObj.current_page = res.content.current_page
-            this.pageObj.per_page = res.content.per_page
+            this.pageObj.per_page = parseInt(res.content.per_page)
           } else {
             this.$Message.warning(res.content.message)
           }
@@ -122,14 +129,3 @@
     }
   }
 </script>
-
-<style>
-  .pageBox {
-    margin-top: 20px;
-    float: right;
-    margin-right: 20px;
-  }
-  .clear {
-    clear: both;
-  }
-</style>
