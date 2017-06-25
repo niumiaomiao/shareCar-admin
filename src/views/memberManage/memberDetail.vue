@@ -1,7 +1,7 @@
 <template>
   <div>
     <Row :gutter="16">
-      <Col span="24" class="first-title">车辆信息</Col><br/> 
+      <Col span="24" class="first-title">会员详情</Col><br/> 
       <Col span="24" class="small-title">基本信息</Col><br/>
       <Col span="6">
           <div>头像：<img :src="dataObj.face"></div>
@@ -84,11 +84,12 @@
   export default {
     data () {
       return {
-        userId: 'DE018640-DCEE-C7B3-453F-CFE484DBFDF8',
+        userId: '',
         dataObj: {}
       }
     },
     mounted () {
+      this.userId = window.location.href.split('/').pop()
       this.getmemberDetail()
     },
     methods: {

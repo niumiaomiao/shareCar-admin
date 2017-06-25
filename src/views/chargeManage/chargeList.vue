@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav-bar title="城市管理"></nav-bar>
+    <nav-bar title="充电桩管理"></nav-bar>
     <Form :label-width="80">
       <Row :gutter="16">
         <Col span="8">

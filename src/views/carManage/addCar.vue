@@ -194,6 +194,18 @@
     },
     methods: {
       addCar () {
+        if (this.formData.TCIStartDate) {
+          this.formData.TCIStartDate = GX.formData(this.formData.TCIStartDate, 'yyyy-MM-dd')
+        }
+        if (this.formData.TCIEndDate) {
+          this.formData.TCIEndDate = GX.formData(this.formData.TCIEndDate, 'yyyy-MM-dd')
+        }
+        if (this.formData.VCIStartDate) {
+          this.formData.VCIStartDate = GX.formData(this.formData.VCIStartDate, 'yyyy-MM-dd')
+        }
+        if (this.formData.VCIEndDate) {
+          this.formData.VCIEndDate = GX.formData(this.formData.VCIEndDate, 'yyyy-MM-dd')
+        }
         GX.postJson('/backend/cars', this.formData, (res) => {
           if (res.result === 0) {
             this.$Message.seccess('添加车辆成功')

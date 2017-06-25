@@ -145,7 +145,7 @@ const routers = [
         }
       }, {
         // 会员详情
-        path: '/member/detail',
+        path: '/member/detail/:id',
         name: 'memberDetail',
         component (resolve) {
           require.ensure(['../views/memberManage/memberDetail.vue'], () => {
@@ -208,7 +208,7 @@ const routers = [
         }
       }, {
         //  订单详情页
-        path: '/order/detail',
+        path: '/order/detail/:id',
         name: 'orderDetail',
         component (resolve) {
           require.ensure(['../views/orderManage/orderDetail.vue'], () => {

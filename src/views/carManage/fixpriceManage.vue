@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav-bar title="城市管理"></nav-bar>
+    <nav-bar title="定价管理"></nav-bar>
     <Form :label-width="80">
       <Row :gutter="16">
         <Col span="8">
@@ -58,11 +58,11 @@
           </Select>
         </Form-item>
         <Form-item label="时间段">
-          <Select placeholder="请选择">
+          <Select placeholder="请选择" v-model="timeDis">
             <Option value="1">日间档</Option>
             <Option value="2">夜间档</Option>
-            <option value="3">晚上包车</option>
-            <option value="4">全天用车</option>
+            <Option value="3">晚上包车</Option>
+            <Option value="4">全天用车</Option>
           </Select>
         </Form-item>
         <Form-item label="每小时价格">
@@ -78,9 +78,9 @@
           <Input v-model="priceContent.day" placeholder="请输入价格"></Input>
         </Form-item>
         <Form-item label="打包价">
-          2-3天<Input placeholder="请输入价格"></Input><br/>
-          4-5天<Input placeholder="请输入价格"></Input><br/>
-          6-7天<Input placeholder="请输入价格"></Input>
+          2-3天<Input placeholder="请输入价格" v-model="timeDisOne"></Input><br/>
+          4-5天<Input placeholder="请输入价格" v-model="timeDisTwo"></Input><br/>
+          6-7天<Input placeholder="请输入价格" v-model="timeDisThree"></Input>
         </Form-item>
       </Form>
     </Modal>
@@ -160,23 +160,64 @@
           per_page: 20
         },
         showAdd: false,
-        // 省份
+        // 详细数据
+        priceContent: {
+          day: '',
+          night: ''
+        },
+        // 省份列表
         provice: [],
-        // 小时价格
-        hourPrice: 0,
+        // 包车时间段
+        timeDis: '',
+        // 打包价格
+        disCount: [],
+        // 每公里价格
         kiloPrice: 0,
-        // 小时
-        hourStyle: [],
-        kiloStyle: [],
-        // 计价方式JSON
-        priceContent: {},
+        // 每小时价格
+        hourPrice: 0,
+        timeDisOne: '',
+        timeDisTwo: '',
+        timeDisThree: '',
+        timeOneArray: [],
+        timeTwoArray: [],
+        timeThreeArray: [],
         formData: {
+          carTypeID: '',
           cityID: '',
           countryID: '',
-          feetype: ''
+          disCount: '',
+          feetype: '',
+          priceContent: {}
         },
         // 车型
         typeList: []
+      }
+    },
+    watch: {
+      timeDisOne (val) {
+        if (val) {
+          this.timeOneArray = []
+          this.timeOneArray.push(['2-3', val])
+          this.disCount.push(this.timeOneArray)
+          console.log('qqq', this.disCount)
+        }
+      },
+      timeDisTwo (val) {
+        if (val) {
+          this.timeTwoArray = []
+          this.timeTwoArray.push(['4-5', val])
+          this.disCount.push(this.timeTwoArray)
+        }
+      },
+      timeDisThree (val) {
+        if (val) {
+          this.timeThreeArray = []
+          this.timeThreeArray.push(['6-7', val])
+          this.disCount.push(this.timeThreeArray)
+        }
+      },
+      disCount (val) {
+        this.formData.disCount = JSON.stringify(val)
       }
     },
     mounted () {
@@ -208,11 +249,18 @@
             this.pageObj.current_page = res.content.current_page
             this.pageObj.per_page = parseInt(res.content.per_page)
           } else {
-            this.$Message.warning(res.content.message)
+            this.$Message.warning(res.message)
           }
         })
       },
       addFix () {
+        GX.postJson('/backend/fee/types', this.formData, (res) => {
+          if (res.result === 0) {
+            this.$Message.warning('添加成功')
+          } else {
+            this.$Message.warning(res.message)
+          }
+        })
         this.showAdd = false
       }
     },

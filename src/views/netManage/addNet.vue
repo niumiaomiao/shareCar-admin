@@ -138,6 +138,9 @@
     },
     methods: {
       addCar () {
+        if (this.formData.cooperation_end_date) {
+          this.formData.cooperation_end_date = GX.formData(this.formData.cooperation_end_date, 'yyyy-MM-dd')
+        }
         GX.postJson('/backend/garages', this.formData, (res) => {
           if (res.result === 0) {
             this.$Message.success('添加网点成功')

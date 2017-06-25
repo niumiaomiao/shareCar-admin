@@ -112,11 +112,12 @@
   export default {
     data () {
       return {
-        orderId: 'FAS234',
+        orderId: '',
         dataObj: {}
       }
     },
     mounted () {
+      this.orderId = window.location.href.split('/').pop()
       this.getmemberDetail()
     },
     methods: {

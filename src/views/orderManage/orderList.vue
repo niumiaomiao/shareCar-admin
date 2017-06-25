@@ -100,15 +100,20 @@
             fixed: 'right',
             render (h, params) {
               return h('div', [
-                h('Icon', {
+                h('Button', {
                   props: {
-                    type: 'ios-eye',
-                    size: '22'
+                    type: 'primary',
+                    size: 'small'
                   },
                   style: {
                     marginRight: '5px'
+                  },
+                  on: {
+                    click: () => {
+                      window.location.href = '/order/detail/' + params.row.orderNo
+                    }
                   }
-                }),
+                }, '详情'),
                 h('Icon', {
                   props: {
                     type: 'trash-a',

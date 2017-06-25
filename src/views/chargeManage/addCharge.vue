@@ -8,8 +8,8 @@
           </Form-item>
         </Col>
         <Col span="8">
-          <Form-item label="网点名称" v-model="formData.garage_id">
-            <Input placeholder="请输入网点名称"></Input>
+          <Form-item label="网点名称">
+            <Input v-model="formData.garage_id" placeholder="请输入网点名称"></Input>
           </Form-item>
         </Col>
       </Row>
@@ -23,7 +23,7 @@
         <Col span="8">
           <Form-item label="型号">
             <Select placeholder="请选择" v-model="formData.model">
-              <Option v-for="item in typeList" :value="item.name">{{item.name}}</Option>
+              <Option v-for="item in typeList" :value="item.name" :key="item">{{item.name}}</Option>
             </Select>
           </Form-item>
         </Col>
@@ -103,9 +103,12 @@
     },
     methods: {
       addCar () {
-        GX.postJson('/backendHTTP/chargingPiles', this.formData, (res) => {
+        GX.postJson('/backend/chargingPiles', this.formData, (res) => {
           if (res.result === 0) {
             this.$Message.warning('添加充电桩成功成功')
+            setTimeout(() => {
+              window.location.href = '/charge/list'
+            }, 2000)
           } else {
             this.$Message.warning(res.message)
           }
