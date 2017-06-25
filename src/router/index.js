@@ -54,7 +54,7 @@ const routers = [
           })
         }
       }, {
-        // 违章列表
+        // 新增违章
         path: '/illegal/add',
         name: 'illegalAdd',
         component (resolve) {
@@ -69,6 +69,51 @@ const routers = [
         component (resolve) {
           require.ensure(['../views/illegalManage/illegalDetail.vue'], () => {
             resolve(require('../views/illegalManage/illegalDetail.vue'))
+          })
+        }
+      }, {
+        // 维保列表
+        path: '/maintenance/list',
+        name: 'maintenanceList',
+        component (resolve) {
+          require.ensure(['../views/maintenanceManage/maintenanceList.vue'], () => {
+            resolve(require('../views/maintenanceManage/maintenanceList.vue'))
+          })
+        }
+      }, {
+        // 保养详情
+        path: '/maintain/detail',
+        name: 'maintainDetail',
+        component (resolve) {
+          require.ensure(['../views/maintenanceManage/maintainDetail.vue'], () => {
+            resolve(require('../views/maintenanceManage/maintainDetail.vue'))
+          })
+        }
+      }, {
+        // 维修详情
+        path: '/repair/detail',
+        name: 'repairDetail',
+        component (resolve) {
+          require.ensure(['../views/maintenanceManage/repairDetail.vue'], () => {
+            resolve(require('../views/maintenanceManage/repairDetail.vue'))
+          })
+        }
+      }, {
+        // 保险详情
+        path: '/insurance/detail',
+        name: 'insuranceDetail',
+        component (resolve) {
+          require.ensure(['../views/maintenanceManage/insuranceDetail.vue'], () => {
+            resolve(require('../views/maintenanceManage/insuranceDetail.vue'))
+          })
+        }
+      }, {
+        // 清洗详情
+        path: '/rinse/detail',
+        name: 'rinseDetail',
+        component (resolve) {
+          require.ensure(['../views/maintenanceManage/rinseDetail.vue'], () => {
+            resolve(require('../views/maintenanceManage/rinseDetail.vue'))
           })
         }
       }, {

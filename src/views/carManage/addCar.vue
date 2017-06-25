@@ -3,52 +3,58 @@
     <Form  :label-width="120">
       <Row :gutter="16">
         <Col span="6">
-          <Form-item label="订单号">
-            <Input placeholder="请输入订单号" v-model="formData.plate"></Input>
-          </Form-item>
-        </Col>
-        <Col span="6">
           <Form-item label="车牌号">
-            <Input placeholder="车牌号" v-model="formData.plate"></Input>
+            <Input placeholder="请输入车牌号" v-model="formData.plate"></Input>
           </Form-item>
         </Col>
         <Col span="6">
-          <Form-item label="车型" v-model="formData.vinNo">
-            <Input placeholder="请输入车型"></Input>
+          <Form-item label="车型">
+            <Select placeholder="请选择" v-model="formData.typeID" v-if="typeList">
+              <Option v-for="item in typeList" :value="item.name" :key="item">{{item.name}}</Option>
+            </Select>
           </Form-item>
         </Col>
         <Col span="6">
-          <Form-item label="违章地点" v-model="formData.engineNo">
-            <Input placeholder="违章地点"></Input>
+          <Form-item label="车架号" v-model="formData.vinNo">
+            <Input placeholder="请输入车牌号"></Input>
+          </Form-item>
+        </Col>
+        <Col span="6">
+          <Form-item label="发动机号" v-model="formData.engineNo">
+            <Input placeholder="请输入发动机号"></Input>
           </Form-item>
         </Col>
       </Row>
 
       <Row :gutter="16">
         <Col span="6">
-          <Form-item label="违章类型" v-model="formData.seatCount">
-            <Input placeholder="请输入违章类型"></Input>
+          <Form-item label="座位数" v-model="formData.seatCount">
+            <Input placeholder="请输入座位数"></Input>
           </Form-item>
         </Col>
         <Col span="6">
-          <Form-item label="违章时间">
+          <Form-item label="城市">
+            <Select placeholder="请选择" v-model="formData.cityId">
+              <Option value="3">北京市</Option>
+              <Option value="4">上海市</Option>
+              <Option value="7">深圳市</Option>
+            </Select>
+          </Form-item>
+        </Col>
+        <Col span="6">
+          <Form-item label="颜色" v-model="formData.color">
+            <Input placeholder="请输入颜色"></Input>
+          </Form-item>
+        </Col>
+        <Col span="6">
+          <Form-item label="检验有效期">
             <Date-picker v-model="formData.check_expire_date" type="date" placeholder="选择日期"></Date-picker>
-          </Form-item>
-        </Col>
-        <Col span="6">
-          <Form-item label="罚款金额" v-model="formData.color">
-            <Input placeholder="请输入罚款金额"></Input>
-          </Form-item>
-        </Col>
-        <Col span="6">
-          <Form-item label="扣分" v-model="formData.color">
-            <Input placeholder="请输入扣分"></Input>
           </Form-item>
         </Col>
       </Row>
       <Row>
         <Col span="6">
-          <Form-item label="处理状态">
+          <Form-item label="交强险保险公司">
             <Input v-model="formData.TCICompany" placeholder="请输入交强险保险公司"></Input>
           </Form-item>
         </Col>

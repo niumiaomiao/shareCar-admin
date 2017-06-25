@@ -59,11 +59,11 @@
               <Icon type="stats-bars"></Icon>
               维保管理
           </template>
-          <Menu-item name="4-1"><router-link to="/">维保列表</router-link></Menu-item>
-          <Menu-item name="4-2"><router-link to="/">保养详情</router-link></Menu-item>
-          <Menu-item name="4-3"><router-link to="/">维修详情</router-link></Menu-item>
-          <Menu-item name="4-4"><router-link to="/">保险详情</router-link></Menu-item>
-          <Menu-item name="4-5"><router-link to="/">清洗详情</router-link></Menu-item>
+          <Menu-item name="4-1"><router-link to="/maintenance/list">维保列表</router-link></Menu-item>
+          <Menu-item name="4-2"><router-link to="/maintain/detail">保养详情</router-link></Menu-item>
+          <Menu-item name="4-3"><router-link to="/repair/detail">维修详情</router-link></Menu-item>
+          <Menu-item name="4-4"><router-link to="/insurance/detail">保险详情</router-link></Menu-item>
+          <Menu-item name="4-5"><router-link to="/rinse/detail">清洗详情</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="4">
