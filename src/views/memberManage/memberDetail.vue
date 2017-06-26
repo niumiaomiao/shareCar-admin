@@ -18,7 +18,7 @@
     </Row><br/>
     <Row :gutter="16">
       <Col span="6">
-          <div>注册时间：{{dataObj.reg_time}}</div>
+          <div>注册时间：{{dataObj.reg_date}}</div>
       </Col>
       <Col span="6">
           <div>用户状态：{{dataObj.user_state}}</div>
@@ -38,7 +38,7 @@
           <div>押金：{{dataObj.deposit}}</div>
       </Col>
       <Col span="6">
-          <div>订单数：{{dataObj.order_count}}</div>
+          <div>订单数：{{dataObj.orders_count}}</div>
       </Col>
       <Col span="6">
           <div>信用值：{{dataObj.credit_score}}</div>

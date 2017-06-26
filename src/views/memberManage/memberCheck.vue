@@ -76,12 +76,13 @@
   export default {
     data () {
       return {
-        userId: 'DE018640-DCEE-C7B3-453F-CFE484DBFDF8',
+        userId: '',
         // 信息查询
         dataObj: {}
       }
     },
     mounted () {
+      this.userId = window.location.href.split('/').pop()
       this.dataObj.verify_state = 1
       this.dataObj.reject_reason = ''
       this.dataObj.verify_remark = ''

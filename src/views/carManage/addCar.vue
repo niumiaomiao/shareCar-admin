@@ -15,21 +15,21 @@
           </Form-item>
         </Col>
         <Col span="6">
-          <Form-item label="车架号" v-model="formData.vinNo">
-            <Input placeholder="请输入车牌号"></Input>
+          <Form-item label="车架号">
+            <Input v-model="formData.vinNo" placeholder="请输入车牌号"></Input>
           </Form-item>
         </Col>
         <Col span="6">
-          <Form-item label="发动机号" v-model="formData.engineNo">
-            <Input placeholder="请输入发动机号"></Input>
+          <Form-item label="发动机号">
+            <Input v-model="formData.engineNo" placeholder="请输入发动机号"></Input>
           </Form-item>
         </Col>
       </Row>
 
       <Row :gutter="16">
         <Col span="6">
-          <Form-item label="座位数" v-model="formData.seatCount">
-            <Input placeholder="请输入座位数"></Input>
+          <Form-item label="座位数">
+            <Input placeholder="请输入座位数" v-model="formData.seatCount"></Input>
           </Form-item>
         </Col>
         <Col span="6">
@@ -42,8 +42,8 @@
           </Form-item>
         </Col>
         <Col span="6">
-          <Form-item label="颜色" v-model="formData.color">
-            <Input placeholder="请输入颜色"></Input>
+          <Form-item label="颜色">
+            <Input placeholder="请输入颜色" v-model="formData.color"></Input>
           </Form-item>
         </Col>
         <Col span="6">
@@ -194,17 +194,20 @@
     },
     methods: {
       addCar () {
+        if (this.formData.check_expire_date) {
+          this.formData.check_expire_date = GX.formatDate(this.formData.check_expire_date, 'yyyy-MM-dd')
+        }
         if (this.formData.TCIStartDate) {
-          this.formData.TCIStartDate = GX.formData(this.formData.TCIStartDate, 'yyyy-MM-dd')
+          this.formData.TCIStartDate = GX.formatDate(this.formData.TCIStartDate, 'yyyy-MM-dd')
         }
         if (this.formData.TCIEndDate) {
-          this.formData.TCIEndDate = GX.formData(this.formData.TCIEndDate, 'yyyy-MM-dd')
+          this.formData.TCIEndDate = GX.formatDate(this.formData.TCIEndDate, 'yyyy-MM-dd')
         }
         if (this.formData.VCIStartDate) {
-          this.formData.VCIStartDate = GX.formData(this.formData.VCIStartDate, 'yyyy-MM-dd')
+          this.formData.VCIStartDate = GX.formatDate(this.formData.VCIStartDate, 'yyyy-MM-dd')
         }
         if (this.formData.VCIEndDate) {
-          this.formData.VCIEndDate = GX.formData(this.formData.VCIEndDate, 'yyyy-MM-dd')
+          this.formData.VCIEndDate = GX.formatDate(this.formData.VCIEndDate, 'yyyy-MM-dd')
         }
         GX.postJson('/backend/cars', this.formData, (res) => {
           if (res.result === 0) {

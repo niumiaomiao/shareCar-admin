@@ -36,9 +36,7 @@
         <Col span="6">
           <Form-item label="网点付款方式">
             <Select v-model="formData.pay_type" placeholder="请选择">
-              <Option value="3">北京市</Option>
-              <Option value="4">上海市</Option>
-              <Option value="7">深圳市</Option>
+              <Option value="年付">年付</Option>
             </Select>
           </Form-item>
         </Col>

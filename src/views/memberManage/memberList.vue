@@ -137,10 +137,15 @@
                     }
                   }
                 }, '详情'),
-                h('Icon', {
+                h('Button', {
                   props: {
-                    type: 'trash-a',
-                    size: '22'
+                    type: 'primary',
+                    size: 'small'
+                  },
+                  on: {
+                    click: () => {
+                      window.location.href = 'member/check' + params.row.id
+                    }
                   }
                 })
               ])

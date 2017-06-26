@@ -30,8 +30,6 @@
               会员信息管理
           </template>
           <Menu-item name="10-3"><router-link to="/member/list">会员列表</router-link></Menu-item>
-          <Menu-item name="10-1"><router-link to="/member/detail">会员详情</router-link></Menu-item>
-          <Menu-item name="10-2"><router-link to="/member/check">认证审核</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="16">
