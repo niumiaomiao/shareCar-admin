@@ -154,7 +154,7 @@ const routers = [
         }
       }, {
         // 会员审核
-        path: '/member/check',
+        path: '/member/check/:id',
         name: 'memberCheck',
         component (resolve) {
           require.ensure(['../views/memberManage/memberCheck.vue'], () => {
