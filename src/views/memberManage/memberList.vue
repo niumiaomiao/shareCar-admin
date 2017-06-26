@@ -144,7 +144,7 @@
                   },
                   on: {
                     click: () => {
-                      window.location.href = 'member/check' + params.row.id
+                      window.location.href = '/member/check/' + params.row.id
                     }
                   }
                 }, '审核')
