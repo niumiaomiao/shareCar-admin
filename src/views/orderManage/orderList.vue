@@ -110,7 +110,7 @@
                   },
                   on: {
                     click: () => {
-                      window.location.href = '/order/detail/' + params.row.orderNo
+                      window.location.href = '/order/detail/' + params.row.id
                     }
                   }
                 }, '详情'),

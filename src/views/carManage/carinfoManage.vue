@@ -74,10 +74,13 @@
                   },
                   on: {
                     click: () => {
-                      GX.postJson('/backend/cars/online', {car_id: params.row.id, online_state: params.row.online_state}, (res) => {
-                        if (res.result === 0) {
-                          console.log('更新成功')
-                        }
+                      let lineStates = ''
+                      if (params.row.online_state === '0') {
+                        lineStates = '1'
+                      } else {
+                        lineStates = '0'
+                      }
+                      GX.postJson('/backend/cars/online', {car_id: params.row.id, online_state: lineStates}, (res) => {
                       })
                     }
                   }

@@ -10,7 +10,7 @@
         <Col span="6">
           <Form-item label="车型">
             <Select placeholder="请选择" v-model="formData.typeID" v-if="typeList">
-              <Option v-for="item in typeList" :value="item.name" :key="item">{{item.name}}</Option>
+              <Option v-for="item in typeList" :value="item.id" :key="item">{{item.name}}</Option>
             </Select>
           </Form-item>
         </Col>

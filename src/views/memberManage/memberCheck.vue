@@ -112,7 +112,7 @@
         delete this.dataObj.id
         GX.postJson('/backend/user/verified', this.dataObj, (res) => {
           if (res.result === 0) {
-            this.$Message.success(res.message)
+            this.$Message.success('审核成功')
           } else {
             this.$Message.warning(res.message)
           }
