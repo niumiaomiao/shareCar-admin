@@ -81,6 +81,10 @@
                         lineStates = '0'
                       }
                       GX.postJson('/backend/cars/online', {car_id: params.row.id, online_state: lineStates}, (res) => {
+                        setTimeout(() => {
+                          // window.location.reload()
+                          this.getCarList()
+                        }, 2000)
                       })
                     }
                   }

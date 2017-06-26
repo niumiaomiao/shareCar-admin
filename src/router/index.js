@@ -36,6 +36,15 @@ const routers = [
           })
         }
       }, {
+        // 新增定价
+        path: '/add/fixprice',
+        name: 'addFixprice',
+        component (resolve) {
+          require.ensure(['../views/carManage/addFixprice.vue'], () => {
+            resolve(require('../views/carManage/addFixprice.vue'))
+          })
+        }
+      }, {
         // 车辆信息管理
         path: '/carinfo/manage',
         name: 'carinfoManage',

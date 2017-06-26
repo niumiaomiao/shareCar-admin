@@ -34,7 +34,7 @@
         </Col>
         <Col span="6">
           <Form-item label="城市">
-            <Select placeholder="请选择" v-model="formData.cityId">
+            <Select placeholder="请选择" v-model="formData.cityID">
               <Option value="3">北京市</Option>
               <Option value="4">上海市</Option>
               <Option value="7">深圳市</Option>
@@ -162,7 +162,7 @@
           vinNo: '',
           engineNo: '',
           seatCount: '',
-          cityId: '',
+          cityID: '',
           color: '',
           check_expire_date: '',
           TCICompany: '',
@@ -211,7 +211,10 @@
         }
         GX.postJson('/backend/cars', this.formData, (res) => {
           if (res.result === 0) {
-            this.$Message.seccess('添加车辆成功')
+            this.$Message.success('添加车辆成功')
+            setTimeout(() => {
+              window.location.href = '/carinfo/manage'
+            }, 2000)
           } else {
             this.$Message.warning(res.message)
           }
