@@ -224,6 +224,15 @@ const routers = [
             resolve(require('../views/orderManage/orderDetail.vue'))
           })
         }
+      }, {
+        //  车管员列表
+        path: '/admin/list',
+        name: 'adminList',
+        component (resolve) {
+          require.ensure(['../views/adminManage/adminList.vue'], () => {
+            resolve(require('../views/adminManage/adminList.vue'))
+          })
+        }
       }
     ]
   }, {

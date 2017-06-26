@@ -59,6 +59,14 @@
           <Menu-item name="7-2"><router-link to="/order/detail">订单详情</router-link></Menu-item>
         </Submenu>
 
+        <Submenu name="17">
+          <template slot="title">
+              <Icon type="stats-bars"></Icon>
+              车管员管理
+          </template>
+          <Menu-item name="17-1"><router-link to="/admin/list">管理员列表</router-link></Menu-item>
+        </Submenu>
+
         <Submenu name="3">
           <template slot="title">
               <Icon type="stats-bars"></Icon>
