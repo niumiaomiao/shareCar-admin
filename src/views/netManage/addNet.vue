@@ -137,7 +137,7 @@
     methods: {
       addCar () {
         if (this.formData.cooperation_end_date) {
-          this.formData.cooperation_end_date = GX.formData(this.formData.cooperation_end_date, 'yyyy-MM-dd')
+          this.formData.cooperation_end_date = GX.formatDate(this.formData.cooperation_end_date, 'yyyy-MM-dd')
         }
         GX.postJson('/backend/garages', this.formData, (res) => {
           if (res.result === 0) {
