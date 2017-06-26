@@ -103,7 +103,7 @@
         })
       },
       submit () {
-        this.dataObj.userId = this.userId
+        this.dataObj.user_id = this.userId
         this.dataObj.verify_remark = this.verify_remark
         this.dataObj.verify_state = this.verify_state
         this.dataObj.reject_reason = this.reject_reason
@@ -113,6 +113,9 @@
         GX.postJson('/backend/user/verified', this.dataObj, (res) => {
           if (res.result === 0) {
             this.$Message.success('审核成功')
+            setTimeout(() => {
+              window.location.href = '/member/list'
+            }, 2000)
           } else {
             this.$Message.warning(res.message)
           }
