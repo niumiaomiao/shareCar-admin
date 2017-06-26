@@ -17,7 +17,7 @@
           <Button type="success">清空</Button>
         </Col>
         <Col span="4" offset="3">
-          <Button type="warning" @click.native="showAdd = true">新增</Button>
+          <Button type="warning"><router-link to="/add/charge">新增</router-link></Button>
           <Button type="warning">导出</Button>
         </Col>
       </Row>

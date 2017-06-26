@@ -197,27 +197,20 @@
       timeDisOne (val) {
         if (val) {
           this.timeOneArray = []
-          this.timeOneArray.push(['2-3', val])
-          this.disCount.push(this.timeOneArray)
-          console.log('qqq', this.disCount)
+          this.timeOneArray.push('2-3', val)
         }
       },
       timeDisTwo (val) {
         if (val) {
           this.timeTwoArray = []
-          this.timeTwoArray.push(['4-5', val])
-          this.disCount.push(this.timeTwoArray)
+          this.timeTwoArray.push('4-5', val)
         }
       },
       timeDisThree (val) {
         if (val) {
           this.timeThreeArray = []
-          this.timeThreeArray.push(['6-7', val])
-          this.disCount.push(this.timeThreeArray)
+          this.timeThreeArray.push('6-7', val)
         }
-      },
-      disCount (val) {
-        this.formData.disCount = JSON.stringify(val)
       }
     },
     mounted () {
@@ -254,6 +247,16 @@
         })
       },
       addFix () {
+        if (this.timeOneArray) {
+          this.disCount.push(this.timeOneArray)
+        }
+        if (this.timeTwoArray) {
+          this.disCount.push(this.timeTwoArray)
+        }
+        if (this.timeThreeArray) {
+          this.disCount.push(this.timeThreeArray)
+        }
+        this.formData.disCount = JSON.stringify(this.disCount)
         GX.postJson('/backend/fee/types', this.formData, (res) => {
           if (res.result === 0) {
             this.$Message.warning('添加成功')
