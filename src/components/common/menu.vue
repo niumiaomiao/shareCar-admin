@@ -66,6 +66,15 @@
           </template>
           <Menu-item name="12-1"><router-link to="/admin/list">车管员管理</router-link></Menu-item>
         </Submenu>
+        
+        <Submenu name="8">
+          <template slot="title">
+              <Icon type="stats-bars"></Icon>
+              硬件管理
+          </template>
+          <Menu-item name="8-1"><router-link to="/device/list">设备管理</router-link></Menu-item>
+          <Menu-item name="8-2"><router-link to="/">SIM管理</router-link></Menu-item>
+        </Submenu>
 
         <Submenu name="3">
           <template slot="title">
@@ -122,15 +131,6 @@
               故障申报管理
           </template>
           <Menu-item name="6-1"><router-link to="/">管理列表</router-link></Menu-item>
-        </Submenu>
-
-        <Submenu name="8">
-          <template slot="title">
-              <Icon type="stats-bars"></Icon>
-              硬件管理
-          </template>
-          <Menu-item name="8-1"><router-link to="/">设备管理</router-link></Menu-item>
-          <Menu-item name="8-2"><router-link to="/">SIM管理</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="11">
