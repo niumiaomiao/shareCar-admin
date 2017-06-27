@@ -198,18 +198,24 @@
         if (val) {
           this.timeOneArray = []
           this.timeOneArray.push('2-3', val)
+        } else {
+          this.timeOneArray = []
         }
       },
       timeDisTwo (val) {
         if (val) {
           this.timeTwoArray = []
           this.timeTwoArray.push('4-5', val)
+        } else {
+          this.timeTwoArray = []
         }
       },
       timeDisThree (val) {
         if (val) {
           this.timeThreeArray = []
           this.timeThreeArray.push('6-7', val)
+        } else {
+          this.timeThreeArray = []
         }
       }
     },

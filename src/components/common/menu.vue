@@ -59,12 +59,12 @@
           <Menu-item name="7-2"><router-link to="/order/detail">订单详情</router-link></Menu-item>
         </Submenu>
 
-        <Submenu name="17">
+        <Submenu name="12">
           <template slot="title">
               <Icon type="stats-bars"></Icon>
               车管员管理
           </template>
-          <Menu-item name="17-1"><router-link to="/admin/list">管理员列表</router-link></Menu-item>
+          <Menu-item name="12-1"><router-link to="/admin/list">车管员管理</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="3">
@@ -140,14 +140,6 @@
           </template>
           <Menu-item name="11-1"><router-link to="/">商户返点</router-link></Menu-item>
           <Menu-item name="11-2"><router-link to="/">返点详情</router-link></Menu-item>
-        </Submenu>
-
-        <Submenu name="12">
-          <template slot="title">
-              <Icon type="stats-bars"></Icon>
-              车管员管理
-          </template>
-          <Menu-item name="12-1"><router-link to="/">车管员管理</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="13">
