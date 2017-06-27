@@ -5,7 +5,7 @@
       <Row :gutter="16">
         <Col span="8">
           <Form-item label="车型选择">
-            <Select placeholder="请选择" style="width: 120px">
+            <Select placeholder="请选择" style="width: 120px" v-model="formData.name">
               <Option value="beijing">北京市</Option>
               <Option value="shanghai">上海市</Option>
               <Option value="shenzhen">深圳市</Option>

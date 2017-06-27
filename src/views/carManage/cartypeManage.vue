@@ -5,7 +5,7 @@
       <Row :gutter="16">
         <Col span="8">
           <Form-item label="车型选择">
-            <Select placeholder="请选择" style="width: 120px">
+            <Select placeholder="请选择" style="width: 120px" v-model="formData.name">
               <Option value="beijing">北京市</Option>
               <Option value="shanghai">上海市</Option>
               <Option value="shenzhen">深圳市</Option>
@@ -13,7 +13,7 @@
           </Form-item>
         </Col>
         <Col span="4" offset="4">
-          <Button type="info">查询</Button>
+          <Button type="info" @click.native="getCarList">查询</Button>
           <Button type="success">清空</Button>
         </Col>
         <Col span="4" offset="3">
@@ -99,6 +99,12 @@
           current_page: 1,
           per_page: 20
         },
+        formData: {
+          select: '',
+          limit: 20,
+          page: 1,
+          name: ''
+        },
         showAdd: false,
         editName: '',
         name: ''
@@ -109,7 +115,10 @@
     },
     methods: {
       getCarList () {
-        GX.getJson('/backend/car/type', {}, (res) => {
+        this.formData.limit = this.pageObj.per_page
+        this.formData.page = this.pageObj.current_page
+        this.formData.keyword = this.formData.name
+        GX.getJson('/backend/car/type', this.formData, (res) => {
           if (res.result === 0) {
             this.dataTable = res.content.data
             this.pageObj.total = res.content.total
