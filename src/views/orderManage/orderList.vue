@@ -36,63 +36,78 @@
         columns1: [
           {
             title: '序号',
-            key: 'id'
+            key: 'id',
+            sortable: true
           },
           {
             title: '订单号',
-            key: 'orderNo'
+            key: 'orderNo',
+            sortable: true
           },
           {
             title: '城市',
-            key: 'city'
+            key: 'city',
+            sortable: true
           },
           {
             title: '车牌号',
-            key: 'plate'
+            key: 'plate',
+            sortable: true
           },
           {
             title: '车型',
-            key: 'car_type'
+            key: 'car_type',
+            sortable: true
           },
           {
             title: '手机号',
-            key: 'phone'
+            key: 'phone',
+            sortable: true
           },
           {
             title: '取车网点名称',
-            key: 'start_garage'
+            key: 'start_garage',
+            sortable: true
           },
           {
             title: '还车网点名称',
-            key: 'end_garage'
+            key: 'end_garage',
+            sortable: true
           },
           {
             title: '订单状态',
-            key: 'order_state'
+            key: 'order_state',
+            sortable: true
           },
           {
             title: '订单金额',
-            key: 'totalMoney'
+            key: 'totalMoney',
+            sortable: true
           },
           {
             title: '支付状态',
-            key: 'payment'
+            key: 'payment',
+            sortable: true
           },
           {
             title: '已抵扣金额',
-            key: 'discountMoney'
+            key: 'discountMoney',
+            sortable: true
           },
           {
             title: '时长',
-            key: 'usingLength'
+            key: 'usingLength',
+            sortable: true
           },
           {
             title: '开始时间',
-            key: 'startTime'
+            key: 'startTime',
+            sortable: true
           },
           {
             title: '结束时间',
-            key: 'endTime'
+            key: 'endTime',
+            sortable: true
           },
           {
             title: '操作',

@@ -86,73 +86,85 @@
             title: '序号',
             width: 100,
             type: 'index',
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '单号',
             key: 'id',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '车牌号',
             key: 'birthday',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '车型',
             key: 'phone',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '城市',
             key: 'deposit_state',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '维保类型',
             key: 'username',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '维保地点',
             key: 'verify_state',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '维保状态',
             key: 'user_state',
             width: 120,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '维保性质',
             key: 'orders_count',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '维保费用(元)',
             key: 'credit_score',
             width: 120,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '维保时间',
             key: 'reg_date',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '维保人员',
             key: 'user_state',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '操作',

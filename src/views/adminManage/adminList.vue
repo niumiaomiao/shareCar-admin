@@ -53,23 +53,28 @@
         columns1: [
           {
             title: '序号',
-            key: 'userID'
+            key: 'userID',
+            sortable: true
           },
           {
             title: '姓名',
-            key: 'username'
+            key: 'username',
+            sortable: true
           },
           {
             title: '手机号',
-            key: 'phone'
+            key: 'phone',
+            sortable: true
           },
           {
             title: '城市',
-            key: 'city'
+            key: 'city',
+            sortable: true
           },
           {
             title: '创建时间',
-            key: 'created_at'
+            key: 'created_at',
+            sortable: true
           }
         ],
         dataTable: [],

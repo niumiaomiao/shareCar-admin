@@ -36,27 +36,33 @@
         columns1: [
           {
             title: '序号',
-            key: 'id'
+            key: 'id',
+            sortable: true
           },
           {
             title: '城市',
-            key: 'city'
+            key: 'city',
+            sortable: true
           },
           {
             title: '县',
-            key: 'county'
+            key: 'county',
+            sortable: true
           },
           {
             title: '县以下区域',
-            key: 'region'
+            key: 'region',
+            sortable: true
           },
           {
             title: '操作人',
-            key: 'operator'
+            key: 'operator',
+            sortable: true
           },
           {
             title: '操作日期',
-            key: 'operat_time'
+            key: 'operat_time',
+            sortable: true
           },
           {
             title: '操作',

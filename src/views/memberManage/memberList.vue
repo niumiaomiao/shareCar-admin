@@ -71,51 +71,63 @@
         columns1: [
           {
             title: '提醒',
-            key: 'id'
+            key: 'id',
+            sortable: true
           },
           {
             title: '序号',
-            key: 'id'
+            key: 'id',
+            sortable: true
           },
           {
             title: '性别',
-            key: 'sex'
+            key: 'sex',
+            sortable: true
           },
           {
             title: '出生年月',
-            key: 'birthday'
+            key: 'birthday',
+            sortable: true
           },
           {
             title: '手机号',
-            key: 'phone'
+            key: 'phone',
+            sortable: true
           },
           {
             title: '认证状态',
-            key: 'deposit_state'
+            key: 'deposit_state',
+            sortable: true
           },
           {
             title: '认证姓名',
-            key: 'username'
+            key: 'username',
+            sortable: true
           },
           {
             title: '押金状态',
-            key: 'verify_state'
+            key: 'verify_state',
+            sortable: true
           },
           {
             title: '用户状态',
-            key: 'user_state'
+            key: 'user_state',
+            sortable: true
           },
           {
             title: '订单数',
-            key: 'orders_count'
+            key: 'orders_count',
+            sortable: true
           },
           {
             title: '信用值',
-            key: 'credit_score'
+            key: 'credit_score',
+            sortable: true
           },
           {
             title: '注册时间',
-            key: 'reg_date'
+            key: 'reg_date',
+            sortable: true
           },
           {
             title: '操作',

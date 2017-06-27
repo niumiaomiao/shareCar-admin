@@ -47,39 +47,48 @@
         columns1: [
           {
             title: '提醒',
-            key: 'car_state'
+            key: 'car_state',
+            sortable: true
           },
           {
             title: '序号',
-            key: 'id'
+            key: 'id',
+            sortable: true
           },
           {
             title: '城市',
-            key: 'city'
+            key: 'city',
+            sortable: true
           },
           {
             title: '网点名称',
-            key: 'name'
+            key: 'name',
+            sortable: true
           },
           {
             title: '详细地址',
-            key: 'city'
+            key: 'city',
+            sortable: true
           },
           {
             title: '车位数',
-            key: 'car_state'
+            key: 'car_state',
+            sortable: true
           },
           {
             title: '电桩数',
-            key: 'address'
+            key: 'address',
+            sortable: true
           },
           {
             title: '类型',
-            key: 'type'
+            key: 'type',
+            sortable: true
           },
           {
             title: '状态',
-            key: 'state'
+            key: 'state',
+            sortable: true
           },
           {
             title: '操作',

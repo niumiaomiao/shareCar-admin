@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav-bar title="车辆信息管理"></nav-bar>
-    <Table stripe :columns="columns1" :data="dataTable"></Table>
+    <Table stripe :columns="columns1" :data="dataTable" ></Table>
     <Page class-name="pageBox" :total="pageObj.total" @on-change="nextPage" show-elevator></Page>
     <div class="clear"></div>
   </div>
@@ -16,47 +16,58 @@
         columns1: [
           {
             title: '提醒',
-            key: 'car_state'
+            key: 'car_state',
+            sortable: true
           },
           {
             title: '序号',
-            key: 'id'
+            key: 'id',
+            sortable: true
           },
           {
             title: '车牌号',
-            key: 'plate_num'
+            key: 'plate_num',
+            sortable: true
           },
           {
             title: '车型',
-            key: 'car_type'
+            key: 'car_type',
+            sortable: true
           },
           {
             title: '城市',
-            key: 'city'
+            key: 'city',
+            sortable: true
           },
           {
             title: '车辆状态',
-            key: 'car_state'
+            key: 'car_state',
+            sortable: true
           },
           {
             title: '在线状态',
-            key: 'online_state'
+            key: 'online_state',
+            sortable: true
           },
           {
             title: '使用状态',
-            key: 'use_state'
+            key: 'use_state',
+            sortable: true
           },
           {
             title: '电量',
-            key: 'electricity'
+            key: 'electricity',
+            sortable: true
           },
           {
             title: '剩余续航里程(KM)',
-            key: 'left_mileage'
+            key: 'left_mileage',
+            sortable: true
           },
           {
             title: '终端状态',
-            key: 'terminal_state'
+            key: 'terminal_state',
+            sortable: true
           },
           {
             title: '操作',

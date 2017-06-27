@@ -37,31 +37,38 @@
         columns1: [
           {
             title: '序号',
-            key: 'id'
+            key: 'id',
+            sortable: true
           },
           {
             title: '城市',
-            key: 'city'
+            key: 'city',
+            sortable: true
           },
           {
             title: '县',
-            key: 'area'
+            key: 'area',
+            sortable: true
           },
           {
             title: '车型',
-            key: 'car_type'
+            key: 'car_type',
+            sortable: true
           },
           {
             title: '时间段',
-            key: 'priceContent'
+            key: 'priceContent',
+            sortable: true
           },
           {
             title: '计价类型',
-            key: 'fee_type'
+            key: 'fee_type',
+            sortable: true
           },
           {
             title: '操作时间',
-            key: 'updated_at'
+            key: 'updated_at',
+            sortable: true
           },
           {
             title: '操作',
