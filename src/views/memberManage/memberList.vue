@@ -4,17 +4,17 @@
       <Row :gutter="16">
         <Col span="6">
           <Form-item label="姓名">
-            <Input placeholder="请输入"></Input>
+            <Input placeholder="请输入" v-model="formData.name"></Input>
           </Form-item>
         </Col>
         <Col span="6">
           <Form-item label="手机号">
-            <Input placeholder="请输入"></Input>
+            <Input placeholder="请输入" v-model="formData.phone"></Input>
           </Form-item>
         </Col>
         <Col span="6">
           <Form-item label="认证状态">
-            <Select placeholder="请选择">
+            <Select placeholder="请选择" v-model="formData.verify_state">
               <Option value="3">北京市</Option>
               <Option value="4">上海市</Option>
               <Option value="7">深圳市</Option>
@@ -28,14 +28,14 @@
       <Row :gutter="16">
         <Col span="6">
           <Form-item label="押金状态">
-            <Select placeholder="请选择">
+            <Select placeholder="请选择" v-model="formData.deposit_state">
               <Option value="1">北京市</Option>
               <Option value="2">上海市</Option>
               <Option value="3">深圳市</Option>
             </Select>
           </Form-item>
         </Col>
-        <Col span="6">
+        <!-- <Col span="6">
           <Form-item label="用户状态">
             <Select placeholder="请选择">
               <Option value="4">北京市</Option>
@@ -43,16 +43,16 @@
               <Option value="6">深圳市</Option>
             </Select>
           </Form-item>
-        </Col>
+        </Col> -->
         <Col span="6">
           <Form-item label="注册时间">
-            <Date-picker type="date" placeholder="选择日期"></Date-picker>
+            <Date-picker v-model="formData.reg_date" type="date" placeholder="选择日期"></Date-picker>
           </Form-item>
         </Col>
         <Col span="6">
             <div>
-              <Button type="info">信息按钮</Button>
-              <Button type="success">成功按钮</Button>
+              <Button type="info">清空</Button>
+              <Button type="success" @click.native="getCarList">搜索</Button>
             </div>
         </Col>
       </Row>
@@ -157,6 +157,15 @@
           total: 1,
           current_page: 1,
           per_page: 20
+        },
+        formData: {
+          deposit_state: '',
+          limit: 50,
+          name: '',
+          page: 1,
+          phone: '',
+          reg_date: '',
+          verify_state: ''
         }
       }
     },
@@ -165,7 +174,10 @@
     },
     methods: {
       getCarList () {
-        GX.getJson('/backend/users', {}, (res) => {
+        // 分页赋值
+        this.formData.limit = this.pageObj.per_page
+        this.formData.page = this.pageObj.page
+        GX.getJson('/backend/users', this.formData, (res) => {
           if (res.result === 0) {
             this.dataTable = res.content.data
             this.pageObj.total = res.content.total
