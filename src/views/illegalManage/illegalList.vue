@@ -28,8 +28,8 @@
         </Col>
         <Col span="3">
             <div>
-              <Button type="info">查询</Button>
-              <Button type="success">清空</Button>
+            <Button type="info">清空</Button>
+              <Button type="success" @click.native="getCarList">搜索</Button>
             </div>
         </Col>
         <Col span="3">
