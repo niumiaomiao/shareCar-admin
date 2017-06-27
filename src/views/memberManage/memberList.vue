@@ -58,7 +58,7 @@
       </Row>
     </Form>
     <Table stripe :columns="columns1" :data="dataTable"></Table>
-    <Page class-name="pageBox" :total="pageObj.total" :current="pageObj.current_page" :page-size="pageObj.per_page" show-elevator></Page>
+    <Page class-name="pageBox" :total="pageObj.total" :page-size="formData.limit" @on-change="nextPage" show-elevator></Page>
     <div class="clear"></div>
   </div>
 </template>
@@ -166,13 +166,11 @@
         ],
         dataTable: [],
         pageObj: {
-          total: 1,
-          current_page: 1,
-          per_page: 20
+          total: 1
         },
         formData: {
           deposit_state: '',
-          limit: 50,
+          limit: 20,
           name: '',
           page: 1,
           phone: '',
@@ -186,9 +184,6 @@
     },
     methods: {
       getCarList () {
-        // 分页赋值
-        this.formData.limit = this.pageObj.per_page
-        this.formData.page = this.pageObj.page
         GX.getJson('/backend/users', this.formData, (res) => {
           if (res.result === 0) {
             this.dataTable = res.content.data
@@ -199,6 +194,10 @@
             this.$Message.warning(res.content.message)
           }
         })
+      },
+      nextPage (page) {
+        this.formData.page = page
+        this.getCarList()
       }
     }
   }

@@ -5,25 +5,24 @@
       <Row :gutter="16">
         <Col span="4">
           <Form-item label="城市">
-            <Input placeholder="请输入"></Input>
+            <Input placeholder="请输入" v-model="formData.city"></Input>
           </Form-item>
         </Col>
         <Col span="4">
           <Form-item label="网点名称">
-            <Input placeholder="请输入网点名称"></Input>
+            <Input placeholder="请输入网点名称" v-model="formData.name"></Input>
           </Form-item>
         </Col>
         <Col span="4">
-          <Form-item label="车型选择">
-            <Select placeholder="请选择" style="width: 120px">
-              <Option value="beijing">北京市</Option>
-              <Option value="shanghai">上海市</Option>
-              <Option value="shenzhen">深圳市</Option>
+          <Form-item label="状态">
+            <Select placeholder="请选择" style="width: 120px" v-model="formData.state">
+              <Option value="1">启用</Option>
+              <Option value="2">停用</Option>
             </Select>
           </Form-item>
         </Col>
         <Col span="3" offset="3">
-          <Button type="info">查询</Button>
+          <Button type="info" @click.native="getCarList">查询</Button>
           <Button type="success">清空</Button>
         </Col>
         <Col span="3" offset="1">
@@ -33,7 +32,7 @@
       </Row>
     </Form>
     <Table stripe :columns="columns1" :data="dataTable"></Table>
-    <Page class-name="pageBox" :total="pageObj.total" :current="pageObj.current_page" :page-size="pageObj.per_page" show-elevator></Page>
+    <Page class-name="pageBox" :total="pageObj.total" @on-change="nextPage" show-elevator></Page>
     <div class="clear"></div>
   </div>
 </template>
@@ -122,9 +121,14 @@
         ],
         dataTable: [],
         pageObj: {
-          total: 1,
-          current_page: 1,
-          per_page: 20
+          total: 1
+        },
+        formData: {
+          city: '',
+          name: '',
+          state: '',
+          page: 1,
+          limit: 20
         }
       }
     },
@@ -133,16 +137,18 @@
     },
     methods: {
       getCarList () {
-        GX.getJson('/backend/garages', {}, (res) => {
+        GX.getJson('/backend/garages', this.formData, (res) => {
           if (res.result === 0) {
             this.dataTable = res.content.data
             this.pageObj.total = res.content.total
-            this.pageObj.current_page = res.content.current_page
-            this.pageObj.per_page = res.content.per_page
           } else {
             this.$Message.warning(res.content.message)
           }
         })
+      },
+      nextPage (page) {
+        this.formData.page = page
+        this.getCarList()
       }
     },
     components: {
