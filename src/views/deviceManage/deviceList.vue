@@ -29,7 +29,7 @@
           </Form-item>
         </Col>
         <Col span="4" offset="4">
-          <Button type="info">查询</Button>
+          <Button type="info" @click.native="getDeviceList">查询</Button>
           <Button type="success">清空</Button>
         </Col>
         <Col span="4" offset="3">
