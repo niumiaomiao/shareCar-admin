@@ -39,7 +39,7 @@
       </Row>
     </Form>
     <Modal v-model="showAdd" title="添加车管员" @on-ok="addDeviceList">
-      <Form :label-width="80">
+      <Form :label-width="120">
         <Form-item label="汽车ID">
             <Input v-model="newData.car_id" placeholder="请输入汽车ID"></Input>
         </Form-item>
