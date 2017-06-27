@@ -23,7 +23,7 @@
       </Row>
     </Form>
     <Table stripe :columns="columns1" :data="dataTable"></Table>
-    <Page class-name="pageBox" :total="pageObj.total" :current="pageObj.current_page" :page-size="pageObj.per_page" show-elevator></Page>
+    <Page class-name="pageBox" :total="pageObj.total" @on-change="nextPage" show-elevator></Page>
     <div class="clear"></div>
   </div>
 </template>
@@ -93,9 +93,11 @@
         ],
         dataTable: [],
         pageObj: {
-          total: 1,
-          current_page: 1,
-          per_page: 20
+          total: 1
+        },
+        formData: {
+          limit: 10,
+          page: 1
         }
       }
     },
@@ -104,16 +106,18 @@
     },
     methods: {
       getCarList () {
-        GX.getJson('/backend/fee/types', {}, (res) => {
+        GX.getJson('/backend/fee/types', this.formData, (res) => {
           if (res.result === 0) {
             this.dataTable = res.content.data
             this.pageObj.total = res.content.total
-            this.pageObj.current_page = res.content.current_page
-            this.pageObj.per_page = parseInt(res.content.per_page)
           } else {
             this.$Message.warning(res.message)
           }
         })
+      },
+      nextPage (page) {
+        this.formData.page = page
+        this.getCarList()
       }
     },
     components: {

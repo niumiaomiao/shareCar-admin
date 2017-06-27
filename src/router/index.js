@@ -233,6 +233,15 @@ const routers = [
             resolve(require('../views/adminManage/adminList.vue'))
           })
         }
+      }, {
+        //  车管员列表
+        path: '/device/list',
+        name: 'deviceList',
+        component (resolve) {
+          require.ensure(['../views/deviceManage/deviceList.vue'], () => {
+            resolve(require('../views/deviceManage/deviceList.vue'))
+          })
+        }
       }
     ]
   }, {
