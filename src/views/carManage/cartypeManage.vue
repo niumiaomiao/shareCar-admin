@@ -125,9 +125,6 @@
         GX.getJson('/backend/car/type', this.formData, (res) => {
           if (res.result === 0) {
             this.dataTable = res.content.data
-            this.pageObj.total = res.content.total
-            this.pageObj.current_page = res.content.current_page
-            this.pageObj.per_page = res.content.per_page
           } else {
             this.$Message.warning(res.content.message)
           }

@@ -42,7 +42,17 @@
           {
             title: '车辆状态',
             key: 'car_state',
-            sortable: true
+            sortable: true,
+            render: (h, params) => {
+              return h('div', [
+                h('Icon', {
+                  props: {
+                    type: 'person'
+                  }
+                }),
+                h('text', {})
+              ])
+            }
           },
           {
             title: '在线状态',
@@ -115,7 +125,7 @@
           total: 1
         },
         formData: {
-          limit: 10,
+          limit: 20,
           page: 1
         }
       }
@@ -128,9 +138,6 @@
         GX.getJson('/backend/cars', this.formData, (res) => {
           if (res.result === 0) {
             this.dataTable = res.content.data
-            this.pageObj.total = res.content.total
-            this.pageObj.current_page = res.content.current_page
-            this.pageObj.per_page = res.content.per_page
           } else {
             this.$Message.warning(res.content.message)
           }

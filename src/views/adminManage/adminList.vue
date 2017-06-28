@@ -79,9 +79,7 @@
         ],
         dataTable: [],
         pageObj: {
-          total: 1,
-          current_page: 1,
-          per_page: 20
+          total: 1
         },
         showAdd: false,
         formItem: {

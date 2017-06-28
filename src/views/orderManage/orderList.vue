@@ -1,29 +1,100 @@
 <template>
   <div>
-    <nav-bar title="城市管理"></nav-bar>
+    <nav-bar title="订单列表"></nav-bar>
     <Form :label-width="80">
       <Row :gutter="16">
-        <Col span="8">
-          <Form-item label="车型选择">
-            <Select placeholder="请选择" style="width: 120px">
+        <Col span="4">
+          <Form-item label="订单编号">
+            <Input placeholder="请输入" v-model="formData.orderNo"></Input>
+          </Form-item>
+        </Col>
+        <Col span="4">
+          <Form-item label="城市">
+            <Select placeholder="请选择" v-model="formData.city_id">
               <Option value="beijing">北京市</Option>
               <Option value="shanghai">上海市</Option>
               <Option value="shenzhen">深圳市</Option>
             </Select>
           </Form-item>
         </Col>
-        <Col span="4" offset="4">
-          <Button type="info">查询</Button>
-          <Button type="success">清空</Button>
+        <Col span="4">
+          <Form-item label="车牌号">
+            <Input placeholder="请输入" v-model="formData.plate"></Input>
+          </Form-item>
         </Col>
-        <Col span="4" offset="3">
-          <Button type="warning" @click.native="showAdd = true">新增</Button>
-          <Button type="warning">导出</Button>
+        <Col span="4">
+          <Form-item label="车型">
+            <Select placeholder="请选择" v-model="formData.car_type_id">
+              <Option value="beijing">北京市</Option>
+              <Option value="shanghai">上海市</Option>
+              <Option value="shenzhen">深圳市</Option>
+            </Select>
+          </Form-item>
         </Col>
+        <Col span="4">
+          <Form-item label="手机号">
+            <Input placeholder="请输入" v-model="formData.phone"></Input>
+          </Form-item>
+        </Col>
+        <Col span="2">
+          <Form-item label="开始时间">
+            <Date-picker type="date" placeholder="选择日期" v-model="formData.start_time"></Date-picker>
+          </Form-item>
+        </Col>
+        <Col span="2">
+          <Form-item label="结束时间">
+            <Date-picker type="date" placeholder="选择日期" v-model="formData.end_time"></Date-picker>
+          </Form-item>
+        </Col>
+        </Row>
+
+        <Row>
+          <Col span="4">
+            <Form-item label="取车网点">
+              <Select placeholder="请选择" v-model="formData.startGarageID">
+                <Option value="beijing">北京市</Option>
+                <Option value="shanghai">上海市</Option>
+                <Option value="shenzhen">深圳市</Option>
+              </Select>
+            </Form-item>
+          </Col>
+          <Col span="4">
+            <Form-item label="还车网点">
+              <Select placeholder="请选择" v-model="formData.endGarageID">
+                <Option value="beijing">北京市</Option>
+                <Option value="shanghai">上海市</Option>
+                <Option value="shenzhen">深圳市</Option>
+              </Select>
+            </Form-item>
+          </Col>
+          <Col span="4">
+            <Form-item label="订单状态">
+              <Select placeholder="请选择" v-model="formData.orderStateID">
+                <Option value="beijing">北京市</Option>
+                <Option value="shanghai">上海市</Option>
+                <Option value="shenzhen">深圳市</Option>
+              </Select>
+            </Form-item>
+          </Col>
+          <Col span="4">
+            <Form-item label="支付状态">
+              <Select placeholder="请选择" v-model="formData.payment">
+                <Option value="beijing">北京市</Option>
+                <Option value="shanghai">上海市</Option>
+                <Option value="shenzhen">深圳市</Option>
+              </Select>
+            </Form-item>
+          </Col>
+          <Col span="4" :offset="2">
+            <Button type="info">清空</Button>
+            <Button type="success" @click.native="getCityList">搜索</Button>
+            <Button type="warning">导出</Button>
+          </Col>
       </Row>
     </Form>
     <Table stripe :columns="columns1" :data="dataTable"></Table>
-    <Page class-name="pageBox" :total="pageObj.total" :current="pageObj.current_page" :page-size="pageObj.per_page" show-elevator></Page>
+    <Page class-name="pageBox" :total="pageObj.total" :page-size="formData.limit" @on-change="nextPage" show-elevator></Page>
+    <div class="clear"></div>
   </div>
 </template>
 
@@ -141,9 +212,20 @@
         ],
         dataTable: [],
         pageObj: {
-          total: 1,
-          current_page: 1,
-          per_page: 20
+          total: 1
+        },
+        formData: {
+          page: 1,
+          limit: 20,
+          city_id: '',
+          endGarageID: '',
+          end_time: '',
+          orderNo: '',
+          orderStateID: '',
+          phone: '',
+          plate: '',
+          startGarageID: '',
+          start_time: ''
         }
       }
     },
@@ -152,7 +234,7 @@
     },
     methods: {
       getCityList () {
-        GX.getJson('/backend/orders', {}, (res) => {
+        GX.getJson('/backend/orders', this.formData, (res) => {
           if (res.result === 0) {
             this.dataTable = res.content.data
             this.pageObj.total = res.content.total
@@ -162,6 +244,10 @@
             this.$Message.warning(res.content.message)
           }
         })
+      },
+      nextPage (page) {
+        this.formData.page = page
+        this.getCityList()
       }
     },
     components: {
@@ -169,3 +255,14 @@
     }
   }
 </script>
+
+<style>
+  .pageBox {
+    margin-top: 20px;
+    float: right;
+    margin-right: 20px;
+  }
+  .clear {
+    clear: both;
+  }
+</style>

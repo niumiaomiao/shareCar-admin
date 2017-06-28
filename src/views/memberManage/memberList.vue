@@ -15,9 +15,10 @@
         <Col span="6">
           <Form-item label="认证状态">
             <Select placeholder="请选择" v-model="formData.verify_state">
-              <Option value="3">北京市</Option>
-              <Option value="4">上海市</Option>
-              <Option value="7">深圳市</Option>
+              <Option value="1">未认证</Option>
+              <Option value="2">已认证</Option>
+              <Option value="3">未通过</Option>
+              <Option value="4">已过期</Option>
             </Select>
           </Form-item>
         </Col>
@@ -29,9 +30,10 @@
         <Col span="6">
           <Form-item label="押金状态">
             <Select placeholder="请选择" v-model="formData.deposit_state">
-              <Option value="1">北京市</Option>
-              <Option value="2">上海市</Option>
-              <Option value="3">深圳市</Option>
+              <Option value="1">未支付</Option>
+              <Option value="2">已支付</Option>
+              <Option value="3">未退款</Option>
+              <Option value="4">已退款</Option>
             </Select>
           </Form-item>
         </Col>
@@ -58,7 +60,7 @@
       </Row>
     </Form>
     <Table stripe :columns="columns1" :data="dataTable"></Table>
-    <Page class-name="pageBox" :total="pageObj.total" :current="pageObj.current_page" :page-size="pageObj.per_page" show-elevator></Page>
+    <Page class-name="pageBox" :total="pageObj.total" :page-size="formData.limit" @on-change="nextPage" show-elevator></Page>
     <div class="clear"></div>
   </div>
 </template>
@@ -166,13 +168,11 @@
         ],
         dataTable: [],
         pageObj: {
-          total: 1,
-          current_page: 1,
-          per_page: 20
+          total: 1
         },
         formData: {
           deposit_state: '',
-          limit: 50,
+          limit: 20,
           name: '',
           page: 1,
           phone: '',
@@ -186,9 +186,6 @@
     },
     methods: {
       getCarList () {
-        // 分页赋值
-        this.formData.limit = this.pageObj.per_page
-        this.formData.page = this.pageObj.page
         GX.getJson('/backend/users', this.formData, (res) => {
           if (res.result === 0) {
             this.dataTable = res.content.data
@@ -199,6 +196,10 @@
             this.$Message.warning(res.content.message)
           }
         })
+      },
+      nextPage (page) {
+        this.formData.page = page
+        this.getCarList()
       }
     }
   }
