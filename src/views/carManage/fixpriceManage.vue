@@ -5,13 +5,13 @@
       <Row :gutter="16">
         <Col span="4">
           <Form-item label="城市">
-            <Cascader :data="cityObj" :value="formData.city_id" change-on-select @on-change="handleChange"></Cascader>
+            <Cascader :data="cityObj" change-on-select @on-change="handleChange"></Cascader>
           </Form-item>
         </Col>
         <Col span="4">
           <Form-item label="车型">
             <Select placeholder="请选择" v-model="formData.car_type">
-              <Option v-for="item in typeList" :value="item.name">{{item.name}}</Option>
+              <Option v-for="item in typeList" :value="item.name" :key="item">{{item.name}}</Option>
             </Select>
           </Form-item>
         </Col>

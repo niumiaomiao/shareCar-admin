@@ -1,6 +1,62 @@
 <template>
   <div>
     <nav-bar title="车辆信息管理"></nav-bar>
+    <Form :label-width="80">
+      <Row :gutter="16">
+        <Col span="6">
+          <Form-item label="车牌号">
+            <Input placeholder="请输入"></Input>
+          </Form-item>
+        </Col>
+        <Col span="6">
+          <Form-item label="车辆状态">
+            <Select placeholder="请选择">
+              <Option value="1">已熄火</Option>
+              <Option value="2">已启动</Option>
+            </Select>
+          </Form-item>
+        </Col>
+        <Col span="6">
+          <Form-item label="在线状态">
+            <Select placeholder="请选择">
+              <Option value="1">在线</Option>
+              <Option value="2">离线</Option>
+            </Select>
+          </Form-item>
+        </Col>
+        <Col span="6">
+          <Form-item label="使用状态">
+            <Select placeholder="请选择">
+              <Option value="1">闲置中</Option>
+              <Option value="2">使用中</Option>
+              <Option value="2">充电中</Option>
+              <Option value="2">调度中</Option>
+              <Option value="2">清洗中</Option>
+              <Option value="2">维修中</Option>
+              <Option value="2">保养中</Option>
+              <Option value="2">保险中</Option>
+              <Option value="2">待修</Option>
+              <Option value="2">未上线</Option>
+            </Select>
+          </Form-item>
+        </Col>
+        </Row>
+        <Row>
+        <Col span="6">
+          <Form-item label="城市">
+            <Cascader :data="cityObj" change-on-select @on-change="handleChange"></Cascader>
+          </Form-item>
+        </Col>
+        <Col span="2" offset="8">
+          <Button type="info" @click.native="getCityList">查询</Button>
+          <Button type="success" @click.native="clearForm">清空</Button>
+        </Col>
+        <Col span="2" offset="1">
+          <Button type="warning" @click.native="showAdd = true">新增</Button>
+          <Button type="warning">导出</Button>
+        </Col>
+      </Row>
+    </Form>
     <Table stripe :columns="columns1" :data="dataTable" ></Table>
     <Page class-name="pageBox" :total="pageObj.total" @on-change="nextPage" show-elevator></Page>
     <div class="clear"></div>
@@ -127,11 +183,17 @@
         formData: {
           limit: 20,
           page: 1
-        }
+        },
+        cityObj: []
       }
     },
     mounted () {
       this.getCarList()
+      GX.getJson('/backend/regions/transform', {}, (res) => {
+        if (res.result === 0) {
+          this.cityObj = res.content
+        }
+      })
     },
     methods: {
       getCarList () {
@@ -147,6 +209,9 @@
       nextPage (page) {
         this.formData.page = page
         this.getCarList()
+      },
+      handleChange (value, selectedData) {
+        this.formData.city_id = selectedData.pop().value
       }
     },
     components: {
