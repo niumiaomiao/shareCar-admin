@@ -5,10 +5,8 @@
       <Row :gutter="16">
         <Col span="8">
           <Form-item label="车型选择">
-            <Select placeholder="请选择" style="width: 120px" v-model="formData.name">
-              <Option value="beijing">北京市</Option>
-              <Option value="shanghai">上海市</Option>
-              <Option value="shenzhen">深圳市</Option>
+            <Select placeholder="请选择" style="width: 120px" v-model="formData.keyword">
+              <Option v-for="item in carType" :value="item.name" :key="item">{{item.name}}</Option>
             </Select>
           </Form-item>
         </Col>
@@ -30,7 +28,7 @@
       </Form>
     </Modal>
     <Table stripe :columns="columns1" :data="dataTable"></Table>
-    <Page class-name="pageBox" :total="pageObj.total" :current="pageObj.current_page" :page-size="pageObj.per_page" show-elevator></Page>
+    <Page class-name="pageBox" :total="pageObj.total" @on-change="nextPage" show-elevator></Page>
     <div class="clear"></div>
   </div>
 </template>
@@ -99,19 +97,17 @@
         },
         dataTable: [],
         pageObj: {
-          total: 1,
-          current_page: 1,
-          per_page: 20
+          total: 1
         },
         formData: {
-          select: '',
+          keyword: '',
           limit: 20,
-          page: 1,
-          name: ''
+          page: 1
         },
         showAdd: false,
         editName: '',
-        name: ''
+        name: '',
+        carType: []
       }
     },
     mounted () {
@@ -119,12 +115,15 @@
     },
     methods: {
       getCarList () {
-        this.formData.limit = this.pageObj.per_page
-        this.formData.page = this.pageObj.current_page
-        this.formData.keyword = this.formData.name
         GX.getJson('/backend/car/type', this.formData, (res) => {
           if (res.result === 0) {
             this.dataTable = res.content.data
+            this.pageObj.total = res.content.total
+            res.content.data.map(item => {
+              let proObj = {}
+              proObj.name = item.name
+              this.carType.push(proObj)
+            })
           } else {
             this.$Message.warning(res.content.message)
           }
@@ -144,6 +143,10 @@
           title: '用户信息',
           content: `姓名：7878`
         })
+      },
+      nextPage (page) {
+        this.formData.page = page
+        this.getCarList()
       }
     },
     components: {
