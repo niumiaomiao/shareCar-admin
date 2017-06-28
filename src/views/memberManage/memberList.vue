@@ -15,9 +15,10 @@
         <Col span="6">
           <Form-item label="认证状态">
             <Select placeholder="请选择" v-model="formData.verify_state">
-              <Option value="3">北京市</Option>
-              <Option value="4">上海市</Option>
-              <Option value="7">深圳市</Option>
+              <Option value="1">未认证</Option>
+              <Option value="2">已认证</Option>
+              <Option value="3">未通过</Option>
+              <Option value="4">已过期</Option>
             </Select>
           </Form-item>
         </Col>
@@ -29,9 +30,10 @@
         <Col span="6">
           <Form-item label="押金状态">
             <Select placeholder="请选择" v-model="formData.deposit_state">
-              <Option value="1">北京市</Option>
-              <Option value="2">上海市</Option>
-              <Option value="3">深圳市</Option>
+              <Option value="1">未支付</Option>
+              <Option value="2">已支付</Option>
+              <Option value="3">未退款</Option>
+              <Option value="4">已退款</Option>
             </Select>
           </Form-item>
         </Col>
