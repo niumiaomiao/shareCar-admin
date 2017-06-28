@@ -15,7 +15,7 @@
             </Select>
           </Form-item>
         </Col>
-        <Col span="2" offset="4">
+        <Col span="4" offset="2">
           <Button type="info" @click.native="getCarList">查询</Button>
           <Button type="success" @click.native="clearForm">清空</Button>
         </Col>

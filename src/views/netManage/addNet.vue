@@ -41,15 +41,17 @@
           </Form-item>
         </Col>
         <Col span="6">
+          <Form-item label="营业时间">
+            <Time-picker format="HH:mm" type="timerange" placement="bottom-end" placeholder="选择时间" @on-change="handleChange">
+            </Time-picker>
+          </Form-item>
+        </Col>
+        <Col span="6">
           <Form-item label="网点租金">
             <Input v-model="formData.rent" placeholder="请输入租金（元）"></Input>
           </Form-item>
         </Col>
-        <Col span="6">
-          <Form-item label="营业时间">
-            <Time-picker v-model="formData.opening_time" type="time" placeholder="选择时间" style="width: 168px"></Time-picker>
-          </Form-item>
-        </Col>
+        
       </Row>
       <Row>
         <Col span="6">
@@ -147,6 +149,10 @@
             this.$Message.warning(res.message)
           }
         })
+      },
+      handleChange (time) {
+        let Stime = time.join('-')
+        this.formData.opening_time = Stime
       }
     }
   }
