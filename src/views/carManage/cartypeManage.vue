@@ -111,6 +111,14 @@
       }
     },
     mounted () {
+      // 车型
+      GX.getJson('/backend/car/type', {}, (res) => {
+        if (res.result === 0) {
+          res.content.data.map(val => {
+            this.carType.push(val)
+          })
+        }
+      })
       this.getCarList()
     },
     methods: {
@@ -119,11 +127,6 @@
           if (res.result === 0) {
             this.dataTable = res.content.data
             this.pageObj.total = res.content.total
-            res.content.data.map(item => {
-              let proObj = {}
-              proObj.name = item.name
-              this.carType.push(proObj)
-            })
           } else {
             this.$Message.warning(res.content.message)
           }

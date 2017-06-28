@@ -3,20 +3,23 @@
     <nav-bar title="定价管理"></nav-bar>
     <Form :label-width="80">
       <Row :gutter="16">
-        <Col span="8">
-          <Form-item label="车型选择">
-            <Select placeholder="请选择" style="width: 120px">
-              <Option value="beijing">北京市</Option>
-              <Option value="shanghai">上海市</Option>
-              <Option value="shenzhen">深圳市</Option>
+        <Col span="4">
+          <Form-item label="城市">
+            <Cascader :data="cityObj" :value="formData.city_id" change-on-select @on-change="handleChange"></Cascader>
+          </Form-item>
+        </Col>
+        <Col span="4">
+          <Form-item label="车型">
+            <Select placeholder="请选择" v-model="formData.car_type">
+              <Option v-for="item in typeList" :value="item.name">{{item.name}}</Option>
             </Select>
           </Form-item>
         </Col>
-        <Col span="4" offset="4">
-          <Button type="info">查询</Button>
-          <Button type="success">清空</Button>
+        <Col span="2" offset="4">
+          <Button type="info" @click.native="getCarList">查询</Button>
+          <Button type="success" @click.native="clearForm">清空</Button>
         </Col>
-        <Col span="4" offset="3">
+        <Col span="4" >
           <Button type="warning"><router-link to="/add/fixprice">新增</router-link></Button>
           <Button type="warning">导出</Button>
         </Col>
@@ -104,11 +107,29 @@
         },
         formData: {
           limit: 10,
-          page: 1
-        }
+          page: 1,
+          car_type: '',
+          city_id: ''
+        },
+        typeList: [],
+        cityObj: []
       }
     },
     mounted () {
+      // 车型
+      GX.getJson('/backend/car/type', {}, (res) => {
+        if (res.result === 0) {
+          res.content.data.map(val => {
+            this.typeList.push(val)
+          })
+        }
+      })
+      // 城市
+      GX.getJson('/backend/regions/transform', {}, (res) => {
+        if (res.result === 0) {
+          this.cityObj = res.content
+        }
+      })
       this.getCarList()
     },
     methods: {
@@ -125,6 +146,13 @@
       nextPage (page) {
         this.formData.page = page
         this.getCarList()
+      },
+      handleChange (value, selectedData) {
+        this.formData.city_id = selectedData.pop().value
+      },
+      clearForm () {
+        this.formData.car_type = ''
+        this.formData.city_id = ''
       }
     },
     components: {
