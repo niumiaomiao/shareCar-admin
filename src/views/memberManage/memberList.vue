@@ -193,7 +193,7 @@
             this.pageObj.current_page = res.content.current_page
             this.pageObj.per_page = res.content.per_page
           } else {
-            this.$Message.warning(res.content.message)
+            this.$Message.warning(res.message)
           }
         })
       },
