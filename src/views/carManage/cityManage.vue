@@ -13,8 +13,8 @@
           </Form-item>
         </Col>
         <Col span="4" offset="4">
-          <Button type="info">查询</Button>
-          <Button type="success">清空</Button>
+          <Button type="info" @click.native="getCityList">查询</Button>
+          <Button type="success" @click.native="clearForm">清空</Button>
         </Col>
         <Col span="4" offset="3">
           <Button type="warning" @click.native="showAdd = true">新增</Button>
@@ -23,7 +23,7 @@
       </Row>
     </Form>
     <Table stripe :columns="columns1" :data="dataTable"></Table>
-    <Page class-name="pageBox" :total="pageObj.total" :current="pageObj.current_page" :page-size="pageObj.per_page" show-elevator></Page>
+    <Page class-name="pageBox" :total="pageObj.total" @on-change="nextPage" show-elevator></Page>
   </div>
 </template>
 
@@ -91,9 +91,12 @@
         ],
         dataTable: [],
         pageObj: {
-          total: 1,
-          current_page: 1,
-          per_page: 20
+          total: 1
+        },
+        formData: {
+          name: '',
+          limit: 20,
+          page: 1
         }
       }
     },
@@ -102,7 +105,7 @@
     },
     methods: {
       getCityList () {
-        GX.getJson('/backend/cities', {}, (res) => {
+        GX.getJson('/backend/cities', this.formData, (res) => {
           if (res.result === 0) {
             this.dataTable = res.content.data
             this.pageObj.total = res.content.total
@@ -112,6 +115,13 @@
             this.$Message.warning(res.content.message)
           }
         })
+      },
+      clearForm () {
+        this.formData.name = ''
+      },
+      nextPage (page) {
+        this.formData.page = page
+        this.getCarList()
       }
     },
     components: {
