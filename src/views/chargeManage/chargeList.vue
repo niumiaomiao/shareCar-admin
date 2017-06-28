@@ -36,43 +36,53 @@
         columns1: [
           {
             title: '序号',
-            key: 'id'
+            key: 'id',
+            sortable: true
           },
           {
             title: '编号',
-            key: 'number'
+            key: 'number',
+            sortable: true
           },
           {
             title: '品牌',
-            key: 'brand'
+            key: 'brand',
+            sortable: true
           },
           {
             title: '型号',
-            key: 'model'
+            key: 'model',
+            sortable: true
           },
           {
             title: '功率',
-            key: 'power'
+            key: 'power',
+            sortable: true
           },
           {
             title: '电桩类型',
-            key: 'type'
+            key: 'type',
+            sortable: true
           },
           {
             title: '城市',
-            key: 'city'
+            key: 'city',
+            sortable: true
           },
           {
             title: '网点名称',
-            key: 'garage'
+            key: 'garage',
+            sortable: true
           },
           {
             title: '状态',
-            key: 'status'
+            key: 'status',
+            sortable: true
           },
           {
             title: '操作日期',
-            key: 'updated_at'
+            key: 'updated_at',
+            sortable: true
           },
           {
             title: '操作',

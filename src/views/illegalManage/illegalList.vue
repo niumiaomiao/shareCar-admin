@@ -74,91 +74,106 @@
             title: '序号',
             width: 100,
             type: 'index',
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '订单号',
             key: 'id',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '车牌号',
             key: 'birthday',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '车型',
             key: 'phone',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '违章地点',
             key: 'deposit_state',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '违章行为',
             key: 'username',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '违章时间',
             key: 'verify_state',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '罚款金额(元)',
             key: 'user_state',
             width: 120,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '扣分',
             key: 'orders_count',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '处理状态',
             key: 'credit_score',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '处理方式',
             key: 'reg_date',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '用车类型',
             key: 'user_state',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '用车人',
             key: 'orders_count',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '操作人',
             key: 'credit_score',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '操作时间',
             key: 'reg_date',
             width: 100,
-            align: 'center'
+            align: 'center',
+            sortable: true
           },
           {
             title: '操作',

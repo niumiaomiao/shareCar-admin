@@ -44,19 +44,23 @@
         columns1: [
           {
             title: '序号',
-            key: 'id'
+            key: 'id',
+            sortable: true
           },
           {
             title: '车型',
-            key: 'name'
+            key: 'name',
+            sortable: true
           },
           {
             title: '操作人',
-            key: 'comment'
+            key: 'comment',
+            sortable: true
           },
           {
             title: '操作日期',
-            key: 'updated_at'
+            key: 'updated_at',
+            sortable: true
           },
           {
             title: '操作',

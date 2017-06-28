@@ -66,35 +66,43 @@
         columns1: [
           {
             title: '序号',
-            key: 'id'
+            key: 'id',
+            sortable: true
           },
           {
             title: '序列号',
-            key: 'sn'
+            key: 'sn',
+            sortable: true
           },
           {
             title: '厂商',
-            key: 'factory'
+            key: 'factory',
+            sortable: true
           },
           {
             title: '车牌号',
-            key: 'plate'
+            key: 'plate',
+            sortable: true
           },
           {
             title: '绑定时间',
-            key: 'created_at'
+            key: 'created_at',
+            sortable: true
           },
           {
             title: '使用状态',
-            key: 'state'
+            key: 'state',
+            sortable: true
           },
           {
             title: '处理人',
-            key: 'operator'
+            key: 'operator',
+            sortable: true
           },
           {
             title: '处理时间',
-            key: 'operated_at'
+            key: 'operated_at',
+            sortable: true
           },
           {
             title: '操作',
