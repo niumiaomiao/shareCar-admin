@@ -116,12 +116,13 @@
                 </Select>
               </Form-item>
               <Form-item label="时间段">
-              <Select placeholder="请选择" v-model="timeDis">
+              <!-- <Select placeholder="请选择" v-model="timeDis">
                 <Option value="1">日间档</Option>
                 <Option value="2">夜间档</Option>
                 <Option value="3">晚上包车</Option>
                 <Option value="4">全天用车</Option>
-              </Select>
+              </Select> -->
+               <Time-picker format="HH:mm" type="timerange" placement="bottom-end" placeholder="选择时间" :value="timeDis" @on-change="handleChange"></Time-picker>
               </Form-item>
               <Form-item label="每小时价格">
                 <Input v-model="hourPrice" placeholder="请输入每小时价格"></Input>
@@ -294,6 +295,10 @@
       },
       hTableRemove (index) {
         this.hTableArray.splice(index, 1)
+      },
+      handleChange (time) {
+        let Stime = time.join('-')
+        this.timeDis = Stime
       }
     },
     components: {
