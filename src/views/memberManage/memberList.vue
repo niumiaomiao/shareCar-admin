@@ -186,6 +186,9 @@
     },
     methods: {
       getCarList () {
+        if (this.formData.reg_date) {
+          this.formData.reg_date = GX.formatDate(this.formData.reg_date, 'yyyy-MM-dd')
+        }
         GX.getJson('/backend/users', this.formData, (res) => {
           if (res.result === 0) {
             this.dataTable = res.content.data

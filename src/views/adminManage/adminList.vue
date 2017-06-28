@@ -3,13 +3,19 @@
     <nav-bar title="车管员管理"></nav-bar>
     <Form :label-width="80">
       <Row :gutter="16">
+        <Col>
+          <Form-item label="姓名">
+              <Input v-model="formData.username" placeholder="请输入"></Input>
+          </Form-item>
+        </Col>
+        <Col>
+          <Form-item label="手机号">
+              <Input v-model="formData.phone" placeholder="请输入"></Input>
+          </Form-item>
+        </Col>
         <Col span="8">
           <Form-item label="城市">
-            <Select placeholder="请选择" style="width: 120px">
-              <Option value="beijing">北京市</Option>
-              <Option value="shanghai">上海市</Option>
-              <Option value="shenzhen">深圳市</Option>
-            </Select>
+            <Cascader :data="cityObj" change-on-select @on-change="handleChange"></Cascader>
           </Form-item>
         </Col>
         <Col span="4" offset="4">
@@ -39,7 +45,7 @@
       </Form>
     </Modal>
     <Table stripe :columns="columns1" :data="dataTable"></Table>
-    <Page class-name="pageBox" :total="pageObj.total" :current="pageObj.current_page" :page-size="pageObj.per_page" show-elevator></Page>
+    <Page class-name="pageBox" :total="pageObj.total" :page-size="formData.limit" @on-change="nextPage" show-elevator></Page>
     <div class="clear"></div>
   </div>
 </template>
@@ -87,11 +93,23 @@
           phone: '',
           password: '',
           password_confirmation: ''
-        }
+        },
+        formData: {
+          limit: 20,
+          page: 1,
+          phone: '',
+          username: ''
+        },
+        cityObj: []
       }
     },
     mounted () {
       this.getCarList()
+      GX.getJson('/backend/regions/transform', {}, (res) => {
+        if (res.result === 0) {
+          this.cityObj = res.content
+        }
+      })
     },
     methods: {
       getCarList () {
@@ -99,8 +117,6 @@
           if (res.result === 0) {
             this.dataTable = res.content.data
             this.pageObj.total = res.content.total
-            this.pageObj.current_page = res.content.current_page
-            this.pageObj.per_page = res.content.per_page
           } else {
             this.$Message.warning(res.content.message)
           }
@@ -118,6 +134,13 @@
             this.$Message.warning(res.message)
           }
         })
+      },
+      nextPage (page) {
+        this.formData.page = page
+        this.getCarList()
+      },
+      handleChange (value, selectedData) {
+        this.formData.city_name = selectedData.pop().name
       }
     },
     components: {

@@ -5,7 +5,7 @@
       <Row :gutter="16">
         <Col span="4">
           <Form-item label="城市">
-            <Input placeholder="请输入" v-model="formData.city_name"></Input>
+            <Cascader :data="cityObj" change-on-select @on-change="handleChange"></Cascader>
           </Form-item>
         </Col>
         <Col span="4">
@@ -129,11 +129,17 @@
           state: '',
           limit: 20,
           page: 1
-        }
+        },
+        cityObj: []
       }
     },
     mounted () {
       this.getCityList()
+      GX.getJson('/backend/regions/transform', {}, (res) => {
+        if (res.result === 0) {
+          this.cityObj = res.content
+        }
+      })
     },
     methods: {
       getCityList () {
@@ -151,6 +157,9 @@
       nextPage (page) {
         this.formData.page = page
         this.getCarList()
+      },
+      handleChange (value, selectedData) {
+        this.formData.city_name = selectedData.pop().name
       }
     },
     components: {
