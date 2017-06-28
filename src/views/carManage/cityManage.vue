@@ -3,13 +3,9 @@
     <nav-bar title="城市管理"></nav-bar>
     <Form :label-width="80">
       <Row :gutter="16">
-        <Col span="8">
-          <Form-item label="车型选择">
-            <Select placeholder="请选择" style="width: 120px" v-model="formData.name">
-              <Option value="beijing">北京市</Option>
-              <Option value="shanghai">上海市</Option>
-              <Option value="shenzhen">深圳市</Option>
-            </Select>
+        <Col span="4">
+          <Form-item label="城市">
+            <Cascader :data="cityObj" change-on-select @on-change="handleChange"></Cascader>
           </Form-item>
         </Col>
         <Col span="4" offset="4">
@@ -24,6 +20,7 @@
     </Form>
     <Table stripe :columns="columns1" :data="dataTable"></Table>
     <Page class-name="pageBox" :total="pageObj.total" @on-change="nextPage" show-elevator></Page>
+    <div class="clear"></div>
   </div>
 </template>
 
@@ -94,14 +91,20 @@
           total: 1
         },
         formData: {
-          name: '',
+          city_id: '',
           limit: 20,
           page: 1
-        }
+        },
+        cityObj: []
       }
     },
     mounted () {
       this.getCityList()
+      GX.getJson('/backend/regions/transform', {}, (res) => {
+        if (res.result === 0) {
+          this.cityObj = res.content
+        }
+      })
     },
     methods: {
       getCityList () {
@@ -112,16 +115,19 @@
             this.pageObj.current_page = res.content.current_page
             this.pageObj.per_page = parseInt(res.content.per_page)
           } else {
-            this.$Message.warning(res.content.message)
+            this.$Message.warning(res.message)
           }
         })
       },
       clearForm () {
-        this.formData.name = ''
+        this.formData.city_id = ''
       },
       nextPage (page) {
         this.formData.page = page
         this.getCarList()
+      },
+      handleChange (value, selectedData) {
+        this.formData.city_id = selectedData.pop().value
       }
     },
     components: {
@@ -129,3 +135,13 @@
     }
   }
 </script>
+<style>
+  .pageBox {
+    margin-top: 20px;
+    float: right;
+    margin-right: 20px;
+  }
+  .clear {
+    clear: both;
+  }
+</style>
