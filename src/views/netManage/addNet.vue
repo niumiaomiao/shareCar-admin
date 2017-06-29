@@ -46,20 +46,11 @@
             </Time-picker>
           </Form-item>
         </Col>
-<<<<<<< HEAD
-        <Col span="5">
-=======
         <Col span="6">
->>>>>>> 5e60fbe727fe0f23a8b75c620de0fdf5f14fcc36
           <Form-item label="网点租金">
             <Input v-model="formData.rent" placeholder="请输入租金（元）"></Input>
           </Form-item>
         </Col>
-<<<<<<< HEAD
-
-=======
-        
->>>>>>> 5e60fbe727fe0f23a8b75c620de0fdf5f14fcc36
       </Row>
       <Row>
         <Col span="6">
