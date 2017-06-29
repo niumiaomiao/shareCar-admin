@@ -38,7 +38,7 @@
               网点管理
           </template>
           <Menu-item name="16-1"><router-link to="/net/list">网点列表</router-link></Menu-item>
-          <Menu-item name="16-2"><router-link to="/">网点详情</router-link></Menu-item>
+          <Menu-item name="16-2"><router-link to="/add/net">网点详情</router-link></Menu-item>
         </Submenu>
 
         <Submenu name="9">
@@ -66,7 +66,7 @@
           </template>
           <Menu-item name="12-1"><router-link to="/admin/list">车管员管理</router-link></Menu-item>
         </Submenu>
-        
+
         <Submenu name="8">
           <template slot="title">
               <Icon type="stats-bars"></Icon>

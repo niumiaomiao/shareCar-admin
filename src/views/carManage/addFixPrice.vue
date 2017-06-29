@@ -122,7 +122,7 @@
                 <Option value="3">晚上包车</Option>
                 <Option value="4">全天用车</Option>
               </Select> -->
-               <Time-picker format="HH:mm" type="timerange" placement="bottom-end" placeholder="选择时间" :value="timeDis" @on-change="handleChange"></Time-picker>
+               <Time-picker format="HH:mm" type="timerange" placement="bottom-end" placeholder="选择时间" @on-change="handleChange"></Time-picker>
               </Form-item>
               <Form-item label="每小时价格">
                 <Input v-model="hourPrice" placeholder="请输入每小时价格"></Input>

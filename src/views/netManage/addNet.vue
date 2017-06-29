@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Form  :label-width="120">
+    <Form :label-width="80" v-show="!showMap">
       <Row :gutter="16">
         <Col span="6">
           <Form-item label="网点名称">
@@ -17,7 +17,7 @@
             <Input v-model="formData.address" placeholder="请输入详细地址"></Input>
           </Form-item>
         </Col>
-        <Col span="6">
+        <Col span="5">
           <Form-item label="车位数">
             <Input v-model="formData.spaceCount" placeholder="请输入车位数"></Input>
           </Form-item>
@@ -34,22 +34,24 @@
           </Form-item>
         </Col>
         <Col span="6">
-          <Form-item label="网点付款方式">
+          <Form-item label="网点付款方式" :label-width="90">
             <Select v-model="formData.pay_type" placeholder="请选择">
               <Option value="年付">年付</Option>
             </Select>
           </Form-item>
         </Col>
         <Col span="6">
+          <Form-item label="营业时间">
+            <Time-picker format="HH:mm" type="timerange" placement="bottom-end" placeholder="选择时间" @on-change="handleChange">
+            </Time-picker>
+          </Form-item>
+        </Col>
+        <Col span="5">
           <Form-item label="网点租金">
             <Input v-model="formData.rent" placeholder="请输入租金（元）"></Input>
           </Form-item>
         </Col>
-        <Col span="6">
-          <Form-item label="营业时间">
-            <Time-picker v-model="formData.opening_time" type="time" placeholder="选择时间" style="width: 168px"></Time-picker>
-          </Form-item>
-        </Col>
+
       </Row>
       <Row>
         <Col span="6">
@@ -58,7 +60,7 @@
           </Form-item>
         </Col>
         <Col span="6">
-          <Form-item label="合作结束日期">
+          <Form-item label="合作结束日期" :label-width="90">
             <Date-picker v-model="formData.cooperation_end_date" type="date" placeholder="选择日期"></Date-picker>
           </Form-item>
         </Col>
@@ -67,7 +69,7 @@
             <Input v-model="formData.linkman" placeholder="请输入网点联系人"></Input>
           </Form-item>
         </Col>
-        <Col span="6">
+        <Col span="5">
           <Form-item label="联系人电话">
             <Input v-model="formData.phone" placeholder="请输入联系人电话"></Input>
           </Form-item>
@@ -89,9 +91,14 @@
           </Upload>
           </Form-item>
         </Col>
+        <Col span="10">
+          <Form-item label="还车范围">
+            <Button type="ghost" icon="ios-location" @click="showMap=true">坐标点</Button>
+          </Form-item>
+        </Col>
       </Row>
       <Row>
-        <Col span="20">
+        <Col span="23">
           <Form-item label="备注信息">
             <Input v-model="formData.remark" type="textarea" :autosize="{minRows: 3,maxRows: 8}" placeholder="请输入备注信息"></Input>
           </Form-item>
@@ -106,6 +113,15 @@
         </Col>
       </Row>
     </Form>
+    <div v-show="showMap" >
+      <div>
+          <input id="keyword" type="textbox" value="酒店">
+          <input type="button" value="搜索" onclick="searchKeyword()">
+      </div>
+      <div id="container" style="width: 90%; height: 400px">
+
+      </div>
+    </div>
   </div>
 </template>
 
@@ -114,6 +130,8 @@
   export default {
     data () {
       return {
+        showMap: false,
+        position: '',
         formData: {
           summary: '',
           area_id: '',
@@ -133,6 +151,16 @@
       }
     },
     mounted () {
+      this.$nextTick(() => {
+        let init = () => {
+          let map = new qq.maps.Map(document.getElementById('container'), {
+            center: new qq.maps.LatLng(39.916527, 116.397128),
+            zoom: 10
+          })
+        }
+
+        init()
+      })
     },
     methods: {
       addCar () {
@@ -147,6 +175,10 @@
             this.$Message.warning(res.message)
           }
         })
+      },
+      handleChange (time) {
+        let Stime = time.join('-')
+        this.formData.opening_time = Stime
       }
     }
   }

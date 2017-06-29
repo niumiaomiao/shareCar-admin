@@ -3,28 +3,34 @@
     <nav-bar title="车管员管理"></nav-bar>
     <Form :label-width="80">
       <Row :gutter="16">
-        <Col>
-          <Form-item label="姓名">
-              <Input v-model="formData.username" placeholder="请输入"></Input>
-          </Form-item>
-        </Col>
-        <Col>
-          <Form-item label="手机号">
-              <Input v-model="formData.phone" placeholder="请输入"></Input>
-          </Form-item>
-        </Col>
         <Col span="8">
           <Form-item label="城市">
             <Cascader :data="cityObj" change-on-select @on-change="handleChange"></Cascader>
           </Form-item>
         </Col>
-        <Col span="4" offset="4">
-          <Button type="info">查询</Button>
-          <Button type="success">清空</Button>
+        <Col span="8">
+          <Form-item label="姓名">
+              <Input v-model="formData.username" placeholder="请输入"></Input>
+          </Form-item>
         </Col>
-        <Col span="4" offset="3">
+        <Col span="8">
+          <Form-item label="手机号">
+              <Input v-model="formData.phone" placeholder="请输入"></Input>
+          </Form-item>
+        </Col>
+        </Row>
+        <Row>
+        <Col span="5" :offset="10">
+          <Form-item>
+            <Button type="info" @click.native="getCarList">查询</Button>
+            <Button type="success" @click.native="clearForm">清空</Button>
+          </Form-item>
+        </Col>
+        <Col span="8">
+        <Form-item>
           <Button type="warning" @click.native="showAdd = true">新增</Button>
           <Button type="warning">导出</Button>
+          </Form-item>
         </Col>
       </Row>
     </Form>
@@ -98,7 +104,8 @@
           limit: 20,
           page: 1,
           phone: '',
-          username: ''
+          username: '',
+          city_name: ''
         },
         cityObj: []
       }
@@ -113,7 +120,7 @@
     },
     methods: {
       getCarList () {
-        GX.getJson('/backend/workers', {}, (res) => {
+        GX.getJson('/backend/workers', this.formData, (res) => {
           if (res.result === 0) {
             this.dataTable = res.content.data
             this.pageObj.total = res.content.total
@@ -140,7 +147,13 @@
         this.getCarList()
       },
       handleChange (value, selectedData) {
-        this.formData.city_name = selectedData.pop().name
+        this.formData.city_name = selectedData.pop().label
+        console.log('aa', this.formData.city_name)
+      },
+      clearForm () {
+        this.phone = ''
+        this.username = ''
+        this.city_name = ''
       }
     },
     components: {

@@ -3,7 +3,7 @@
     <nav-bar title="城市管理"></nav-bar>
     <Form :label-width="80">
       <Row :gutter="16">
-        <Col span="4">
+        <Col span="6">
           <Form-item label="城市">
             <Cascader :data="cityObj" change-on-select @on-change="handleChange"></Cascader>
           </Form-item>
@@ -18,6 +18,19 @@
         </Col>
       </Row>
     </Form>
+    <Modal v-model="showAdd" title="新增车型" @on-ok="addCity">
+      <Form :label-width="80" >
+       <!--  <Form-item label="城市">
+          <Input v-model="name" placeholder="请输入"></Input>
+        </Form-item> -->
+        <Form-item label="城市">
+          <Cascader :data="cityObj" change-on-select @on-change="handleChangeAdd"></Cascader>
+        </Form-item>
+        <Form-item label="县以下区域">
+          <Input v-model="addData.region" placeholder="请输入"></Input>
+        </Form-item>
+      </Form>
+    </Modal>
     <Table stripe :columns="columns1" :data="dataTable"></Table>
     <Page class-name="pageBox" :total="pageObj.total" @on-change="nextPage" show-elevator></Page>
     <div class="clear"></div>
@@ -58,7 +71,7 @@
           },
           {
             title: '操作日期',
-            key: 'operat_time',
+            key: 'operate_time',
             sortable: true
           },
           {
@@ -69,7 +82,7 @@
               return h('div', [
                 h('Icon', {
                   props: {
-                    type: 'ios-eye',
+                    type: 'edit',
                     size: '22'
                   },
                   style: {
@@ -95,7 +108,12 @@
           limit: 20,
           page: 1
         },
-        cityObj: []
+        addData: {
+          city_id: '',
+          region: ''
+        },
+        cityObj: [],
+        showAdd: false
       }
     },
     mounted () {
@@ -119,6 +137,13 @@
           }
         })
       },
+      addCity () {
+        if (this.addData.city_id === '') {
+          this.$Message.warning('请选择城市')
+          return
+        }
+        console.log(this.addData)
+      },
       clearForm () {
         this.formData.city_id = ''
       },
@@ -128,6 +153,9 @@
       },
       handleChange (value, selectedData) {
         this.formData.city_id = selectedData.pop().value
+      },
+      handleChangeAdd (value, selectedData) {
+        this.addData.city_id = selectedData.pop().value
       }
     },
     components: {
